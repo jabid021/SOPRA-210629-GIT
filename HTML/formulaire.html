@@ -1,0 +1,59 @@
+<form>
+<fieldset>
+  <legend>Infos Perso</legend>
+  Id : <input  type="hidden" value="123"> <br><br>
+<label for="nom">Nom *</label> <input autofocus id="nom"  required placeholder="nom" type="text"><br><br>
+Prenom <input maxlength="10" size="40" placeholder="prenom" type="text"><br><br>
+Email * <input type="email"><br><br>
+Site web * <input type="url"><br><br>
+Age <input  type="number"><br><br>
+Naissance :  <input type="date"><br><br>
+Heure :  <input type="time"><br><br>
+Semaine :  <input type="week"><br><br>
+Civ :
+<input id="homme" name="civ" type="radio"> <label for="homme">Homme</label>
+<input id="femme" checked name="civ" type="radio"><label for="femme">Femme</label>
+<input id="nb" name="civ" type="radio"><label for="nb">NB</label>
+<br><br>
+</fieldset>
+
+<fieldset>
+  <legend>Connexion</legend>
+Login * <input required placeholder="login" type="text"><br><br>
+Password * <input required placeholder="password" type="password"><br><br>
+</fieldset>
+
+<fieldset>
+  <legend>Prefs</legend>
+Background : <input type="color"><br><br>
+
+Note : <input min=1 max=20 type="range"><br><br>
+
+
+Commentaire <textarea required rows="4" cols="40"></textarea><br><br>
+
+
+Navigateur : <select>
+                  <option>Chrome</option>
+                  <option selected>Edge</option>
+                  <option>Opera</option>
+              </select><br><br>
+
+Couleurs  :
+<input id="rouge" checked type="checkbox"> <label for="rouge">Rouge</label>
+<input id="vert" checked type="checkbox"> <label for="vert">Vert</label>
+<input id="bleu" type="checkbox"> <label for="bleu">Bleu</label>
+<input id="jaune" type="checkbox"> <label for="jaune">Jaune</label>
+<br><br>
+
+</fieldset>
+
+<!--
+<input type="button" value="Valider">
+<button>Valider2</button>
+-->
+
+<input type="submit" value="Envoyer">
+<input type="reset" value="Refresh">
+
+</form>
