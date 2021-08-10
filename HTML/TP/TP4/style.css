@@ -1,0 +1,29 @@
+h3
+{
+  color:red;
+  border-bottom:solid red 1px;
+}
+
+h4
+{
+  color:green;
+  background-color:lightgrey;
+}
+
+a
+{
+  font-size:75px;
+  color:orange;
+  cursor:help;
+}
+
+img
+{
+  border:solid black 2px;
+  border-radius:50%;
+}
+
+.textRight
+{
+  text-align:right;
+}
