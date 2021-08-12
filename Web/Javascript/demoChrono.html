@@ -1,0 +1,59 @@
+<p id="parag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<script>
+
+
+var timer= setTimeout(lancementInterval,650);
+//clearTimeout(timer);
+var interval=setInterval(sapin,500);
+var cpt=0;
+var interval2;
+
+function lancementInterval()
+{
+  interval2=setInterval(modifText,500);
+}
+
+function demoTimeOut()
+{
+  parag.style.display="none";
+}
+
+function sapin()
+{
+  cpt++;
+  if(parag.style.color=="red")
+  {
+    parag.style.color="green";
+  }
+  else
+  {
+    parag.style.color="red";
+  }
+
+  if(cpt>=20)
+  {
+    clearInterval(interval);
+  }
+}
+
+function modifText()
+{
+  cpt++;
+  if(parag.style.fontSize=="20px")
+  {
+    parag.style.fontSize="45px";
+  }
+  else
+  {
+    parag.style.fontSize="20px";
+  }
+
+  if(cpt>=20)
+  {
+    clearInterval(interval2);
+  }
+}
+
+</script>
