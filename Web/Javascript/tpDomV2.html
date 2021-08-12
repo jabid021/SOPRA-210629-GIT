@@ -18,35 +18,37 @@
 
 <script>
 
-var element = prompt("Modifier id / class / tag ?");
-var couleur = prompt("Quelle couleur ?");
+var type = prompt("Modifier id / class / tag ?");
+var element = prompt("Quel element (par "+type+")")
+var prop = prompt("Quelle property ?")
+var valeur = prompt("Quelle valeur ?");
 
-if(element=="id"){modifId(couleur);}
-else if(element=="class"){modifClass(couleur);}
-else if(element=="tag"){modifTag(couleur);}
-else {alert(element +" impossible");}
+if(type=="id"){modifId(element,prop,valeur);}
+else if(type=="class"){modifClass(element,prop,valeur);}
+else if(type=="tag"){modifTag(element,prop,valeur);}
+else {alert(type +" impossible");}
 
 
-function modifId(couleur)
+function modifId(element,prop,valeur)
 {
-  paragPrinci.style.color=couleur;
+  var e = document.getElementById(element);
+  e.style.setProperty(prop,valeur);
 }
 
-function modifClass(couleur)
+function modifClass(element,prop,valeur)
 {
-  var elements = document.getElementsByClassName("secondaire");
+  var elements = document.getElementsByClassName(element);
   for(e of elements)
   {
-    e.style.color=couleur;
+    e.style.setProperty(prop,valeur);
   }
 }
-function modifTag(couleur)
+function modifTag(element,prop,valeur)
 {
-  var typeElement=prompt("Quel tag modifier ? (p,h3...)");
-  var elements = document.getElementsByTagName(typeElement);
+  var elements = document.getElementsByTagName(element);
   for(e of elements)
   {
-    e.style.color=couleur;
+    e.style.setProperty(prop,valeur);
   }
 }
 
