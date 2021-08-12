@@ -5,13 +5,30 @@
 
 
 <script>
+  var sec=58;
+  var min=59;
 
-var sec=0;
-var min=0;
+var interval= setInterval(calculTime,1000);
+
+function calculTime()
+{
+  sec++;
+  if(sec==60)
+  {
+    min++;
+    sec=0;
+    if(min==60){min=0;}
+  }
+
+  var minAffiche = (min<10) ? "0"+min : min;
+  var secAffiche = (sec<10) ? "0"+sec : sec;
+  timer.innerHTML=minAffiche+":"+secAffiche;
+}
 
 
 
-timer.innerHTML=min+":"+sec;
+
+
 
 
 </script>
