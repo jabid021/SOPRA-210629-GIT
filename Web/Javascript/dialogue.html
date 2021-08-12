@@ -1,22 +1,98 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-
-
 <script>
 
-alert("Ceci est une alerte");
+/*
+var notes = new Array();
+var notes2 = [12,15,8,4,20];
+var classe = ["Bob","Jordan","Jeremy","Andy"];
+//alert(notes2.join("-"));
+//notes2[notes2.length]=20;
+notes2.push(20);
 
-var prenom=prompt("Votre prenom");
-alert("Welcome "+prenom);
+//Retire la derniere valeur
+//console.log(notes2.pop());
 
-if(confirm("Adieu ?"))
+//Retire la premiere valeur
+//console.log(notes2.shift());
+
+//Trier un tableau
+console.log(classe.sort());
+//Inverse son ordre
+console.log(classe.reverse());
+
+//Ajoute un element au debut du tableau
+classe.unshift("Victor");
+
+console.log(classe);
+
+console.log(notes2.sort(compare));
+
+function compare(a,b)
 {
-  alert("A+");
+  return a-b;
 }
-else {alert("On reste ici");}
+
+*/
+
+var pers =  new Object();
+pers.age=28;
+pers.prenom="Jordan";
+
+var pers2 = {"prenom":"Jordan","age":28};
+
+sePresenter(pers2);
+var attribut="age";
+
+console.log(pers2[attribut]);
+
+console.log(pers2.prenom);
+console.log(pers2);
+console.log(pers);
+
+var zoom = [pers,pers2];
+
+var zoom = [{"nom":"Doe","age":"42"},{"nom":"Doe","age":"40"},{"nom":"Abid","age":"28"}];
+
+console.log(zoom);
+
+for(var i =0;i<zoom.length;i++)
+{
+  console.log(zoom[i].nom + ", "+zoom[i].age);
+}
+
+for (p in zoom)
+{
+  console.log(zoom[p].nom + ", "+zoom[p].age)
+}
+
+for (p of zoom)
+{
+  console.log(p.nom + ", "+p.age)
+}
 
 
-console.log("Le prenom est "+prenom);
+function sePresenter(personne)
+{
+  alert("Je suis "+personne.prenom+", j'ai "+personne.age);
+}
+
+
+function demoDialogue()
+{
+  alert("Ceci est une alerte");
+
+  var prenom=prompt("Votre prenom");
+  alert("Welcome "+prenom);
+
+  if(confirm("Adieu ?"))
+  {
+    alert("A+");
+  }
+  else {alert("On reste ici");}
+
+  console.log("Le prenom est "+prenom);
+}
 
 
 
