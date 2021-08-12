@@ -1,0 +1,92 @@
+<title>LE DOM</title>
+
+<h1 name="titreDeLaPage" id="monId">Titre de la page</h1>
+
+
+<p class="maClasse">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<h3>Sous titre</h3>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<h2 class="maClasse">zog zog</h2>
+
+<input id="login" type="text" placeholder="login" value="jordan">
+<input id="validate" type="button" value="Valider">
+
+
+
+<script>
+
+
+/*document.title="Nouveau titre";
+alert(document.title);
+*/
+
+modifByTag();
+
+
+
+function modifById()
+{
+
+var maBaliseTitre = document.getElementById("monId");
+var login = document.getElementById("login");
+var btn = document.getElementById("validate");
+
+//Pour pointer un element par id, on peut directement utiliser cet id
+validate.style.color="red";
+//Equivalent de  document.getElementById("validate").style.color="red";
+
+
+maBaliseTitre.style.color="red";
+maBaliseTitre.style.backgroundColor="blue";
+//alert(maBaliseTitre.style.color);
+
+var modif="color";
+maBaliseTitre.style.setProperty(modif,"yellow");
+maBaliseTitre.style.setProperty("background-color","pink");
+
+//alert(maBaliseTitre.innerHTML);
+maBaliseTitre.innerHTML+=" Suite <em>titre</em>";
+
+alert(maBaliseTitre.getAttribute("name"));
+maBaliseTitre.setAttribute("attribut","value");
+maBaliseTitre.removeAttribute("attribut");
+
+btn.setAttribute("disabled",true);
+btn.removeAttribute("disabled");
+
+
+btn.disabled=true;
+btn.disabled=false;
+
+alert(login.value);
+login.value="Andy";
+btn.value="OK";
+
+}
+
+function modifByClass()
+{
+  var balisesMaClasse = document.getElementsByClassName("maClasse");
+  for(element of balisesMaClasse)
+  {
+      element.style.color="blue";
+      element.innerHTML="New Content";
+  }
+}
+
+function modifByTag()
+{
+  var balisesParag = document.getElementsByTagName("p");
+
+  for(element of balisesParag)
+  {
+      element.style.fontSize="25px";
+      element.style.setProperty("color","red");
+  }
+}
+
+</script>

@@ -1,0 +1,34 @@
+
+<script charset="utf-8">
+
+var pays =
+[
+  {"pays":"France","capitale":"Marseille"},
+  {"pays":"Irlande","capitale":"Dublin"},
+  {"pays":"Mongolie","capitale":"Oulan-bator"},
+  {"pays":"Burkina Faso","capitale":"Ouagadougou"},
+  {"pays":"Pologne","capitale":"Varsovie"}
+]
+
+var nbQuestions = pays.length;
+var score=0;
+for(p in pays)
+{
+
+  var cpt = parseInt(p)+1;
+  var reponse = prompt("Quelle est la capitale de ce pays : "+pays[p].pays + " ("+cpt+" / "+nbQuestions+")")
+  if(reponse==pays[p].capitale)
+  {
+    score++;
+    alert("Bonne réponse !");
+  }
+  else
+  {
+    alert("Mauvaise réponse !");
+  }
+
+}
+console.log("Vous avez un score de "+score +" sur "+nbQuestions);
+
+
+</script>
