@@ -1,17 +1,59 @@
 <h1 id="timer">00:00</h1>
-
-
+<input id="play" type="button" value="Play">
+<input disabled id="pause" type="button" value="Pause">
+<input id="reset" type="button" value="Reset">
 
 
 
 <script>
+  var sec=0;
+  var min=0;
+  var interval;
 
-var sec=0;
-var min=0;
+play.onclick=lancerTimer;
+pause.onclick=stopTimer;
+reset.onclick=resetTimer;
+
+function lancerTimer()
+{
+  interval= setInterval(calculTime,1000);
+  play.disabled=true;
+  pause.disabled=false;
+}
+
+function stopTimer()
+{
+  clearInterval(interval);
+  play.disabled=false;
+  pause.disabled=true;
+}
+
+function resetTimer()
+{
+  min=0;
+  sec=0;
+  timer.innerHTML="00:00";
+}
+
+function calculTime()
+{
+  sec++;
+  if(sec==60)
+  {
+    min++;
+    sec=0;
+    if(min==60){min=0;}
+  }
+
+  var minAffiche = (min<10) ? "0"+min : min;
+  var secAffiche = (sec<10) ? "0"+sec : sec;
+  timer.innerHTML=minAffiche+":"+secAffiche;
+}
 
 
 
-timer.innerHTML=min+":"+sec;
+
+
 
 
 </script>
