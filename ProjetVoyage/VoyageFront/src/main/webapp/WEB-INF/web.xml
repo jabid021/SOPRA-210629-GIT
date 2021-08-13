@@ -29,4 +29,14 @@
     <servlet-name>Compte</servlet-name>
     <url-pattern>/Compte</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControlCompte</display-name>
+    <servlet-name>ControlCompte</servlet-name>
+    <servlet-class>controller.ControlCompte</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControlCompte</servlet-name>
+    <url-pattern>/ControlCompte</url-pattern>
+  </servlet-mapping>
 </web-app>
