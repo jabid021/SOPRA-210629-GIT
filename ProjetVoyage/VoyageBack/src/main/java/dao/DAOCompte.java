@@ -54,21 +54,63 @@ public class DAOCompte implements IDAO<Compte,Integer>{
 	}
 
 	@Override
-	public Compte insert(Compte o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Compte insert(Compte c) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+			
+			PreparedStatement ps = conn.prepareStatement("INSERT into compte (login,password,type_compte) VALUES (?,?,?)");
+
+			ps.setString(1, c.getLogin());
+			ps.setString(2, c.getPassword());
+			ps.setString(3, c.getClass().getSimpleName());
+			ps.executeUpdate();
+
+			ps.close();
+			conn.close();
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return c;
 	}
 
 	@Override
-	public Compte update(Compte o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Compte update(Compte c) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+			
+			PreparedStatement ps = conn.prepareStatement("UPDATE compte set login=?,password=?,type_compte=? where id=?");
+
+			ps.setString(1, c.getLogin());
+			ps.setString(2, c.getPassword());
+			ps.setString(3, c.getClass().getSimpleName());
+			ps.setInt(4,c.getId());
+			ps.executeUpdate();
+
+			ps.close();
+			conn.close();
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return c;
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+			
+			PreparedStatement ps = conn.prepareStatement("DELETE from compte where id=?");
+
+			ps.setInt(1,id);
+			ps.executeUpdate();
+
+			ps.close();
+			conn.close();
+		}
+		catch(Exception e) {e.printStackTrace();}
 	}
 	
 	public static Compte seConnecter(String login,String password) 
@@ -102,6 +144,40 @@ public class DAOCompte implements IDAO<Compte,Integer>{
 			e.printStackTrace();
 		}
 		return c;
+	}
+
+	public List<Compte> filterCompte(String mot) {
+		List<Compte> comptes=new ArrayList();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+ 
+			PreparedStatement ps = conn.prepareStatement("SELECT * from compte where login like ? or password like ?");
+			ps.setString(1, "%"+mot+"%");
+			ps.setString(2, "%"+mot+"%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) 
+			{
+				Compte c = null;
+				if(rs.getString("type_compte").equals("admin")) 
+				{
+					 c = new Admin(rs.getInt("id"), rs.getString("login"),rs.getString("password"));
+				}
+				else if(rs.getString("type_compte").equals("client"))
+				{
+					 c = new Client(rs.getInt("id"), rs.getString("login"),rs.getString("password"));
+				}
+				comptes.add(c);
+			}
+			
+			conn.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return comptes;
 	}
 
 }
