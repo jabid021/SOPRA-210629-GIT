@@ -21,12 +21,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Compte</display-name>
-    <servlet-name>Compte</servlet-name>
-    <servlet-class>controller.Compte</servlet-class>
+    <display-name>ControlCompte</display-name>
+    <servlet-name>ControlCompte</servlet-name>
+    <servlet-class>controller.ControlCompte</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Compte</servlet-name>
-    <url-pattern>/Compte</url-pattern>
+    <servlet-name>ControlCompte</servlet-name>
+    <url-pattern>/ControlCompte</url-pattern>
   </servlet-mapping>
 </web-app>
