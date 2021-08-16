@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DAOCompte;
-import dao.DAOVille;
+import dao.jdbc.DAOCompteJDBC;
+import dao.jdbc.DAOVilleJDBC;
 import metier.Admin;
 import metier.Client;
 import metier.Compte;
@@ -21,8 +21,8 @@ public class Connect extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAOCompte daoC = new DAOCompte();
-		DAOVille daoV = new DAOVille();
+		DAOCompteJDBC daoC = new DAOCompteJDBC();
+		DAOVilleJDBC daoV = new DAOVilleJDBC();
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		Compte c = daoC.seConnecter(login, password);
@@ -46,7 +46,7 @@ public class Connect extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-DAOCompte daoC = new DAOCompte();
+DAOCompteJDBC daoC = new DAOCompteJDBC();
 		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
