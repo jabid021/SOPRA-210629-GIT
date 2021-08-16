@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAODepartement;
 import metier.Departement;
 import metier.Region;
 
-public class DAODepartement implements IDAO<Departement,Integer> {
+public class DAODepartementJDBC implements IDAODepartement {
 
 	@Override
 	public Departement findById(Integer id) {
@@ -157,6 +158,33 @@ public class DAODepartement implements IDAO<Departement,Integer> {
 		return d;
 	}
 
-	
+	public List<Departement> filterDepartement(String mot) {
+		List<Departement> departements=new ArrayList();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+ 
+			PreparedStatement ps = conn.prepareStatement("SELECT * from departement where nom like ? or numero like ? or region like ?");
+			ps.setString(1, "%"+mot+"%");
+			ps.setString(2, "%"+mot+"%");
+			ps.setString(3, "%"+mot+"%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) 
+			{
+				String nomRegion=rs.getString("region");
+				Region region=Region.valueOf(nomRegion);
+				Departement d = new Departement(rs.getInt("id"), rs.getString("nom"),rs.getString("numero"),region);
+				departements.add(d);
+			}
+			
+			conn.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return departements;
+	}
 	
 }

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ page import="metier.Ville" %>
-     <%@ page import="dao.DAOVille" %>
+     <%@ page import="dao.jdbc.DAOVilleJDBC" %>
      <%@ page import="java.util.List" %>
     
 <!DOCTYPE html>
@@ -22,16 +22,13 @@
 </tr>
 
 <%
-
-
-DAOVille daoV = new DAOVille();
+DAOVilleJDBC daoV = new DAOVilleJDBC();
 List<Ville> villes = daoV.findAll();
 
 for(Ville v :villes)
 {
 	out.println("<tr><td>"+v.getId()+"</td><td>"+v.getNom()+"</td></tr>");
 }
-
 %>
 </table>
 </body>

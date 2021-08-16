@@ -86,6 +86,7 @@
                <input class ="btn btn-warning" type="submit" name="modifier" value="Modifier">
              </form>
            </div>
+           <a href="admin.html">Retour</a>
          </div>
     </div>
   </div>
