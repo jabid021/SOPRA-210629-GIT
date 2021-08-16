@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,12 +7,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAOVoyage;
 import metier.Compte;
 import metier.Trajet;
 import metier.Transport;
 import metier.Voyage;
 
-public class DAOVoyage  implements IDAO<Voyage,Integer> {
+public class DAOVoyageJDBC  implements IDAOVoyage {
 
 	@Override
 	public Voyage findById(Integer id) {
@@ -22,7 +23,7 @@ public class DAOVoyage  implements IDAO<Voyage,Integer> {
 
 	@Override
 	public List<Voyage> findAll() {
-		DAOTrajet daoTrajet = new DAOTrajet();
+		DAOTrajetJDBC daoTrajet = new DAOTrajetJDBC();
 		List<Voyage> voyages=new ArrayList();
 		try {
 
@@ -77,11 +78,20 @@ public class DAOVoyage  implements IDAO<Voyage,Integer> {
 		return null;
 	}
 
-	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+
+            PreparedStatement ps = conn.prepareStatement("DELETE from voyage where id=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            ps.close();
+            conn.close();
+        }
+        catch(Exception e) {e.printStackTrace();}
+    }
 	
 	public void addAchat(Voyage v, Compte client) {
 		try {
@@ -98,5 +108,34 @@ public class DAOVoyage  implements IDAO<Voyage,Integer> {
 		}
 		catch(Exception e) {e.printStackTrace();}
 	}
+	public List<Voyage> filterVoyage(String mot) {
+        List<Voyage> voyages=new ArrayList();
+        DAOTrajetJDBC daoTrajet = new DAOTrajetJDBC();
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlBDD,loginBDD,passwordBDD);
+ 
+            PreparedStatement ps = conn.prepareStatement("SELECT * from voyage join transport on voyage.id_transport=transport.id join trajet on voyage.id_trajet=trajet.id join ville dep on trajet.id_depart=dep.id join ville dest on trajet.id_destination=dest.id where dep.nom like ? or dest.nom like ? or transport.nom like ?");
+            ps.setString(1, "%"+mot+"%");
+            ps.setString(2, "%"+mot+"%");
+            ps.setString(3, "%"+mot+"%");
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) 
+            {
+
+                Trajet t = daoTrajet.findById(rs.getInt("id_trajet"));
+                Voyage v = new Voyage(rs.getInt("id"), t, Transport.valueOf(rs.getString("transport.nom")), rs.getInt("duree"));
+                voyages.add(v);
+            }
+
+            conn.close();
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return voyages;
+    }
 
 }

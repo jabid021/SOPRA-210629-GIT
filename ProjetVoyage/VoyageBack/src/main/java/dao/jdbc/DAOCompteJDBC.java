@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,15 +7,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAO;
+import dao.IDAOCompte;
 import metier.Admin;
 import metier.Client;
 import metier.Compte;
 
-public class DAOCompte implements IDAO<Compte,Integer>{
+public class DAOCompteJDBC implements IDAOCompte{
 
 	@Override
 	public Compte findById(Integer id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -113,7 +114,7 @@ public class DAOCompte implements IDAO<Compte,Integer>{
 		catch(Exception e) {e.printStackTrace();}
 	}
 	
-	public static Compte seConnecter(String login,String password) 
+	public Compte seConnecter(String login,String password) 
 	{
 		Compte c=null;
 		try {
