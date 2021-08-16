@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.DAOCompte;
-import dao.DAODepartement;
-import dao.DAOTrajet;
-import dao.DAOVille;
-import dao.DAOVoyage;
+import dao.jdbc.DAOCompteJDBC;
+import dao.jdbc.DAODepartementJDBC;
+import dao.jdbc.DAOTrajetJDBC;
+import dao.jdbc.DAOVilleJDBC;
+import dao.jdbc.DAOVoyageJDBC;
 import metier.Admin;
 import metier.Client;
 import metier.Compte;
@@ -29,11 +29,11 @@ public class App {
 
 	static Compte connected=null;
 	static List<Voyage> panier = new ArrayList();
-	static DAODepartement daoD = new DAODepartement();
-	static DAOCompte daoC = new DAOCompte();
-	static DAOTrajet daoT = new DAOTrajet();
-	static DAOVille daoVi = new DAOVille();
-	static DAOVoyage daoVo = new DAOVoyage();
+	static DAODepartementJDBC daoD = new DAODepartementJDBC();
+	static DAOCompteJDBC daoC = new DAOCompteJDBC();
+	static DAOTrajetJDBC daoT = new DAOTrajetJDBC();
+	static DAOVilleJDBC daoVi = new DAOVilleJDBC();
+	static DAOVoyageJDBC daoVo = new DAOVoyageJDBC();
 
 
 	public static int saisieInt(String msg) 

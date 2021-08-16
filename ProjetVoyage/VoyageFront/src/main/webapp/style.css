@@ -11,7 +11,7 @@
 }
 
 
-#addFormVille,#updateFormVille,#addFormCompte,#updateFormCompte
+#addFormVille,#updateFormVille,#addFormCompte,#updateFormCompte,#addFormDep,#updateFormDep,#addFormTrajet,#updateFormTrajet
 {
   display:none;
 }

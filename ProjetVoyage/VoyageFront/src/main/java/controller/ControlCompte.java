@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DAOCompte;
+import dao.jdbc.DAOCompteJDBC;
 import metier.Admin;
 import metier.Client;
 import metier.Compte;
+import util.Context;
 
 
 @WebServlet("/compte")
 public class ControlCompte extends HttpServlet {
 
-	private DAOCompte daoC = new DAOCompte();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<Compte> c = daoC.findAll();
+		List<Compte> c = Context.getInstance().getDaoC().findAll();
 
 		request.setAttribute("comptes", c);
 		this.getServletContext().getRequestDispatcher("/comptes.jsp").forward(request, response);
@@ -47,7 +48,7 @@ public class ControlCompte extends HttpServlet {
 			}
 			else if(request.getParameter("type_compte").equals("Admin"))
 				c = new Admin(request.getParameter("login"), request.getParameter("password"));
-			daoC.insert(c);
+			Context.getInstance().getDaoC().insert(c);
 
 			
 		}
@@ -69,12 +70,12 @@ public class ControlCompte extends HttpServlet {
 		else if(typeCompte.equals("Admin"))
 			c = new Admin(id,login,password);
 
-		daoC.update(c);
+		Context.getInstance().getDaoC().update(c);
 	}
 
 	protected void doDelete(HttpServletRequest request) throws ServletException, IOException {
 
-		daoC.delete(Integer.parseInt(request.getParameter("id")));
+		Context.getInstance().getDaoC().delete(Integer.parseInt(request.getParameter("id")));
 	}
 
 
