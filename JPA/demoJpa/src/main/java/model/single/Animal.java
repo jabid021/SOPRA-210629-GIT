@@ -1,26 +1,39 @@
-package model;
+package model.single;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+
 //Obligatoire
+
 @Entity
 @Table(name="espece")
-public class Animal {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_espece")
+public abstract class Animal {
 
 	//Obligatoire
 	@Id
 	//Obligatoire*
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private int id;
-	private String nom;
-	private double taille;
+	@Column(name="id_espece")
+	protected int id;
+	
+	@Column(name="name",nullable = false, columnDefinition ="VARCHAR(70)")
+	protected String nom;
+	@Column(name="size")
+	protected double taille;
 	
 	public Animal() {}
 
+	
 	public Animal(int id, String nom, double taille) {
 		this.id = id;
 		this.nom = nom;
