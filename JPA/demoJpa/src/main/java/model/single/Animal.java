@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 //Obligatoire
 
-@Entity
+//@Entity
 @Table(name="espece")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_espece")

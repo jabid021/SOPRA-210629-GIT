@@ -2,7 +2,7 @@ package model.perClass;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Bateau extends Vehicule {
 
 	private String nom;

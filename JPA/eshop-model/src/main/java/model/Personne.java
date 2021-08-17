@@ -3,13 +3,16 @@ package model;
 import javax.persistence.*;
 
 @Entity
-public class Personne {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Personne {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String nom;
-	private String prenom;
+	protected int id;
+	@Column(name="lastname")
+	protected String nom;
+	@Column(name="firstname")
+	protected String prenom;
 	
 	public Personne() {
 	}
@@ -51,10 +54,5 @@ public class Personne {
 		this.prenom = prenom;
 	}
 
-	@Override
-	public String toString() {
-		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
-	}
-	
 	
 }
