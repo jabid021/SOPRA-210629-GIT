@@ -3,6 +3,9 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import dao.IDAOCompte;
 import dao.IDAODepartement;
 import dao.IDAOTrajet;
@@ -26,16 +29,18 @@ public class Context {
 	private IDAOTrajet daoT = new DAOTrajetJDBC();
 	private IDAOVille daoVi = new DAOVilleJDBC();
 	private IDAOVoyage daoVo = new DAOVoyageJDBC();
-	
+
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage-persistence");
+
 	//Represente l'objet singleton
 	private static Context _instance=null;
-	
 
-			
+
+
 	private Context() {}
-	
-	
-	
+
+
+
 	public static Context getInstance() 
 	{
 		if(_instance==null) {
@@ -80,5 +85,14 @@ public class Context {
 		return daoVo;
 	}
 
+	public EntityManagerFactory getEmf() {
+		return emf;
+	}
+
+
+	public void closeEmf() 
+	{
+		emf.close();
+	}
 
 }

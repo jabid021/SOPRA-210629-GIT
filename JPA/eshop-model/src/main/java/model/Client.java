@@ -1,16 +1,29 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Client extends Personne{
 
-	protected int age;
+	private int age;
 	@Column(name="date_naissance")
-	protected LocalDate dateNaissance;
+	private LocalDate dateNaissance;
+	
+	@ManyToMany
+	@JoinTable(
+			name="achat",
+			joinColumns = @JoinColumn(name="client"),
+			inverseJoinColumns = @JoinColumn(name="produit")
+		)
+	private List<Produit> produits=new ArrayList();
 	
 	public Client() {
 		super();
@@ -40,9 +53,9 @@ public class Client extends Personne{
 
 	@Override
 	public String toString() {
-		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + ", id=" + id + ", nom=" + nom + ", prenom="
-				+ prenom + "]";
+		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + ", produits=" + produits + "]";
 	}
+
 	
 	
 	
