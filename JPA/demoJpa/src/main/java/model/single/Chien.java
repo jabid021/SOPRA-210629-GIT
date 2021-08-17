@@ -3,7 +3,7 @@ package model.single;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 @DiscriminatorValue("dog")
 public class Chien extends Animal{
 

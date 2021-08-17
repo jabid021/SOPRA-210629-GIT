@@ -3,7 +3,7 @@ package model.joined;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-@Entity
+//@Entity
 @PrimaryKeyJoinColumn(name = "id_ordi")
 public class Linux extends Ordinateur {
 

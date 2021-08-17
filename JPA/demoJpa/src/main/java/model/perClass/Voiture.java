@@ -2,7 +2,7 @@ package model.perClass;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Voiture extends Vehicule{
 
 	private String couleur;
