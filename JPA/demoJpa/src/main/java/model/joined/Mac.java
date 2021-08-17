@@ -3,7 +3,7 @@ package model.joined;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-@Entity
+//@Entity
 @PrimaryKeyJoinColumn(name = "idOrdiFK")
 public class Mac extends Ordinateur {
 
