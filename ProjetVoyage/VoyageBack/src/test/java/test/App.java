@@ -15,6 +15,7 @@ import dao.jpa.DAODepartementJPA;
 import dao.jdbc.DAOTrajetJDBC;
 import dao.jdbc.DAOVilleJDBC;
 import dao.jdbc.DAOVoyageJDBC;
+import dao.jpa.DAOTrajetJPA;
 import metier.Admin;
 import metier.Client;
 import metier.Compte;
@@ -33,7 +34,7 @@ public class App {
 	static List<Voyage> panier = new ArrayList();
 	static DAODepartementJPA daoD = new DAODepartementJPA();
 	static DAOCompteJDBC daoC = new DAOCompteJDBC();
-	static DAOTrajetJDBC daoT = new DAOTrajetJDBC();
+	static DAOTrajetJPA daoT = new DAOTrajetJPA();
 	static DAOVilleJDBC daoVi = new DAOVilleJDBC();
 	static DAOVoyageJDBC daoVo = new DAOVoyageJDBC();
 
