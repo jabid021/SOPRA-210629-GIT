@@ -9,6 +9,7 @@ public class Ville {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
+	@Column(columnDefinition = "TEXT")
 	private String carac;
 	
 	@ManyToOne
