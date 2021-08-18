@@ -24,7 +24,7 @@ public class Context {
 	private List<Voyage> panier = new ArrayList();
 	private IDAODepartement daoD = new DAODepartementJDBC();
 	private IDAOCompte daoC = new DAOCompteJDBC();
-	private IDAOTrajet daoT = new DAOTrajetJDBC();
+	private IDAOTrajet daoT = new DAOTrajetJPA();
 	private IDAOVille daoVi = new DAOVilleJPA();
 	private IDAOVoyage daoVo = new DAOVoyageJPA();
 	private IDAOTransport daoTransport = new DAOTransportJDBC();
