@@ -1,10 +1,19 @@
 package metier;
 
+import javax.persistence.*;
+
+@Entity
 public class Ville {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
-	private String carac ;
-	private Departement departement;
+	private String carac;
+	
+	//@ManyToOne
+	//@JoinColumn(name="id_departement")
+	private transient Departement departement;
 	
 	
 	public Ville(int id,String nom, String carac, Departement departement) {
@@ -25,6 +34,9 @@ public class Ville {
 	public Ville(int id) {
 		this.id=id;
 	}
+	
+
+	public Ville() {}
 
 
 	public String getNom() {
