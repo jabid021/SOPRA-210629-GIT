@@ -21,7 +21,7 @@ public class Trajet {
 	private Ville destination ;
 	private double distance;
 	
-	
+	public Trajet() {}
 	public Trajet(Ville depart, Ville destination, double distance) {
 		this.depart = depart;
 		this.destination = destination;

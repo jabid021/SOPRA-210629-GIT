@@ -24,7 +24,9 @@ public class Voyage implements Serializable{
 	@Column(name="duree", columnDefinition="int")
 	private int dureeSejour;
 
-
+	public Voyage() {
+		
+	}
 	public Voyage(Trajet trajet, Transport transport, int duree) {
 		this.trajet = trajet;
 		this.transport = transport;

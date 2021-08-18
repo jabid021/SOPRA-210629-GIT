@@ -23,7 +23,7 @@ public class DAODepartementJPA implements IDAODepartement {
 	@Override
 	public List<Departement> findAll() {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		List<Departement> departements = em.createQuery("from Recette",Departement.class).getResultList();
+		List<Departement> departements = em.createQuery("from Departement",Departement.class).getResultList();
 		em.close();
 		return departements;
 	}
@@ -41,7 +41,7 @@ public class DAODepartementJPA implements IDAODepartement {
 	public static Departement findByNumero(String numero)
 	{
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Query query= em.createQuery("from departement d where d.numero = :lib",Departement.class);
+		Query query= em.createQuery("from Departement d where d.numero = :lib",Departement.class);
 		query.setParameter("lib", numero);
 		Departement departement = (Departement) query.getSingleResult();
 		em.close();
@@ -51,7 +51,7 @@ public class DAODepartementJPA implements IDAODepartement {
 	public static List<Departement> findByRegion(Region region)
 	{
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Query query= em.createQuery("from departement d where d.region = :lib",Departement.class);
+		Query query= em.createQuery("from Departement d where d.region = :lib",Departement.class);
 		query.setParameter("lib", region.name());
 		List<Departement> departements = query.getResultList();
 		em.close();
@@ -101,7 +101,7 @@ public class DAODepartementJPA implements IDAODepartement {
 	@Override
 	public List<Departement> findByNomLike(String nom) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Query query= em.createQuery("from departement d where d.nom like :lib ",Departement.class);
+		Query query= em.createQuery("from Departement d where d.nom like :lib ",Departement.class);
 		query.setParameter("lib", "%"+nom+"%");
 		List<Departement> departements = query.getResultList();
 		em.close();
@@ -111,7 +111,7 @@ public class DAODepartementJPA implements IDAODepartement {
 	@Override
 	public List<Departement> filterDepartement(String mot) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Query query= em.createQuery("from departement d where d.nom like :lib or d.numero like :lib or d.region like :lib",Departement.class);
+		Query query= em.createQuery("from Departement d where d.nom like :lib or d.numero like :lib or d.region like :lib",Departement.class);
 		query.setParameter("lib", "%"+mot+"%");
 		List<Departement> departements = query.getResultList();
 		em.close();
