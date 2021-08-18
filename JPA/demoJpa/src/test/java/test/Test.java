@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.Adresse;
 import model.Cuisinier;
 import model.Ingredient;
 import model.Plat;
@@ -144,8 +145,8 @@ public class Test {
 	}
 	public static void main(String[] args) {
 	
-		
-		Cuisinier sanji = new Cuisinier("Vinsmoke","Sanji");
+		Adresse a = new Adresse(6,"rue rougememont","Paris");
+		Cuisinier sanji = new Cuisinier("Vinsmoke","Sanji",a);
 		Ingredient i1 = new Ingredient("farine",Unite.g,250);
 		Ingredient i2 = new Ingredient("lait",Unite.L,0.5);
 		Ingredient i3 = new Ingredient("sucre",Unite.cs,2);
@@ -179,6 +180,16 @@ public class Test {
 	
 		//System.out.println(re.getIngredients());
 	
+		EntityManager em =Context.getInstance().getEmf().createEntityManager();
+		Cuisinier c = em.find(Cuisinier.class, 1);
+		em.getTransaction().begin();
+		
+		c.setPrenom("Jordan");
+		em.merge(c);
+		em.getTransaction().commit();
+		
+		em.close();
+		
 		
 		Context.getInstance().closeEmf();
 	

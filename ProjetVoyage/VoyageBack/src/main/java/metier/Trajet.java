@@ -13,10 +13,10 @@ public class Trajet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToOne
 	@JoinColumn(name="id_depart")
 	private Ville depart;
-	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToOne
 	@JoinColumn(name="id_destination")
 	private Ville destination ;
 	private double distance;
