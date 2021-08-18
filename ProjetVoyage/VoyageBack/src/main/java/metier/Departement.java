@@ -1,16 +1,24 @@
 package metier;
 
-public class Departement {
+import javax.persistence.*;
 
+@Entity
+public class Departement {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String numero;
+	@Enumerated(EnumType.STRING)
 	private Region region;
 	
 	
 	
 	public Departement(int id) {
 		this.id=id;
+	}
+
+	public Departement() {
 	}
 
 	public Departement(String nom, String numero, Region region) {

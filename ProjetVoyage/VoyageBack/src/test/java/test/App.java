@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dao.jdbc.DAOCompteJDBC;
-import dao.jdbc.DAODepartementJDBC;
+import dao.jpa.DAODepartementJPA;
 import dao.jdbc.DAOTrajetJDBC;
 import dao.jdbc.DAOVilleJDBC;
 import dao.jdbc.DAOVoyageJDBC;
@@ -31,7 +31,7 @@ public class App {
 
 	static Compte connected=null;
 	static List<Voyage> panier = new ArrayList();
-	static DAODepartementJDBC daoD = new DAODepartementJDBC();
+	static DAODepartementJPA daoD = new DAODepartementJPA();
 	static DAOCompteJDBC daoC = new DAOCompteJDBC();
 	static DAOTrajetJDBC daoT = new DAOTrajetJDBC();
 	static DAOVilleJDBC daoVi = new DAOVilleJDBC();

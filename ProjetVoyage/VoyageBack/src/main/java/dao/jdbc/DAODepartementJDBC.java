@@ -29,7 +29,6 @@ public class DAODepartementJDBC implements IDAODepartement {
 			while(rs.next()) 
 			{
 				 d = new Departement(rs.getInt("id"),rs.getString("nom"),rs.getString("numero"),Region.valueOf(rs.getString("region")));
-				
 			}
 
 			rs.close();
@@ -129,9 +128,10 @@ public class DAODepartementJDBC implements IDAODepartement {
 		catch(Exception e) {e.printStackTrace();}
 	}
 	
-	public Departement findByNomLike(String nom) 
+	public List<Departement> findByNomLike(String nom) 
 	{
 		Departement d=null;
+		List<Departement> departements = new ArrayList<>();
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -145,7 +145,7 @@ public class DAODepartementJDBC implements IDAODepartement {
 			while(rs.next()) 
 			{
 				 d = new Departement(rs.getInt("id"),rs.getString("nom"),rs.getString("numero"),Region.valueOf(rs.getString("region")));
-				
+				 departements.add(d);
 			}
 
 			rs.close();
@@ -155,7 +155,7 @@ public class DAODepartementJDBC implements IDAODepartement {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return d;
+		return departements;
 	}
 
 	public List<Departement> filterDepartement(String mot) {
