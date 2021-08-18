@@ -137,7 +137,7 @@ input[type=submit]:hover {
 						</c:forEach>
 					</select> <br> <select id="newtransport" name="id_transport">
 						<c:forEach items="${transports}" var="transport">
-							<option value=${transport}>${transport}</option>
+							<option value="${transport.nom}">${transport}</option>
 						</c:forEach>
 					</select><br> <input class="btn btn-success" type="submit"
 						name="ajouter" value="Ajouter">
@@ -155,12 +155,12 @@ input[type=submit]:hover {
 						for="update_depart">Départ-Arrivée :</label> <select
 						id="update_trajet" name="id_trajet">
 						<c:forEach items="${trajets}" var="trajet">
-							<option value=${trajet.id}>${trajet.depart.nom}-${trajet.destination.nom}</option>
+							<option value="${trajet.id}">${trajet.depart.nom}-${trajet.destination.nom}</option>
 						</c:forEach>
 					</select> <br> <label for="update_transport">Transport : </label> <select
 						id="update_transport" name="id_transport">
 						<c:forEach items="${transports}" var="transport">
-							<option value=${transport}>${transport}</option>
+							<option value="${transport.nom}">${transport}</option>
 						</c:forEach>
 					</select><br> <input class="btn btn-warning" type="submit"
 						name="modifier" value="Modifier">
