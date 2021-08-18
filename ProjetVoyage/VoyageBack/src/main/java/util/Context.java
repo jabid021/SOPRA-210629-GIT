@@ -22,11 +22,11 @@ public class Context {
 
 	private Compte connected=null;
 	private List<Voyage> panier = new ArrayList();
-	private IDAODepartement daoD = new DAODepartementJDBC();
-	private IDAOCompte daoC = new DAOCompteJDBC();
-	private IDAOTrajet daoT = new DAOTrajetJDBC();
+	private IDAODepartement daoD = new DAODepartementJPA();
+	private IDAOTrajet daoT = new DAOTrajetJPA();
+	private IDAOCompte daoC = new DAOCompteJPA();
 	private IDAOVille daoVi = new DAOVilleJPA();
-	private IDAOVoyage daoVo = new DAOVoyageJDBC();
+	private IDAOVoyage daoVo = new DAOVoyageJPA();
 	private IDAOTransport daoTransport = new DAOTransportJDBC();
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage-persistence");
