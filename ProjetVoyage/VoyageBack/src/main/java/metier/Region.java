@@ -1,8 +1,8 @@
 package metier;
 
 public enum Region {
-	Auvergne_Rhône_Alpes,
-    Bourgogne_Franche_Comté,
+	Auvergne_Rhone_Alpes,
+    Bourgogne_Franche_Comte,
     Bretagne,
     Centre_Val_de_Loire,
     Corse,
@@ -13,5 +13,5 @@ public enum Region {
     Nouvelle_Aquitaine,
     Occitanie,
     Pays_de_la_Loire,
-    Provence_Alpes_Côte_d_Azur;
+    Provence_Alpes_Cote_d_Azur;
 }
