@@ -68,9 +68,10 @@ public class ControlCompte extends HttpServlet {
 			c=new Client(id,login, password);
 		}
 		else if(typeCompte.equals("Admin"))
-			c = new Admin(id,login,password);
+			{c = new Admin(id,login,password);}
+		System.out.println(c);
 
-		Context.getInstance().getDaoC().update(c);
+		//Context.getInstance().getDaoC().update(c);
 	}
 
 	protected void doDelete(HttpServletRequest request) throws ServletException, IOException {

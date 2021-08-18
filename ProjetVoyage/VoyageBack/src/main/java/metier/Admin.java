@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("admin")
 public class Admin extends Compte{
 
+	public Admin() {super();}
 	public Admin(String login, String password) {
 		super(login, password);
 	}

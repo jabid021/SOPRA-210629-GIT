@@ -11,8 +11,8 @@ public class Ville {
 	private String nom;
 	private String carac;
 	
-	//@ManyToOne
-	//@JoinColumn(name="id_departement")
+	@ManyToOne
+	@JoinColumn(name="id_departement")
 	private transient Departement departement;
 	
 	
@@ -85,9 +85,5 @@ public class Ville {
 	}
 
 
-	
-	
-	
-	
 	
 }

@@ -17,7 +17,7 @@ public class Client extends Compte {
 	//@JoinTable(name="achat")
 	private transient List<Voyage> achats = new ArrayList();
 	
-	public Client() {}
+	public Client() {super();}
 	
 	
 	public Client(String login, String password) {
