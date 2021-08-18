@@ -15,10 +15,10 @@ public class Trajet {
 	private int id;
 	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="id_depart")
-	private transient Ville depart;
+	private Ville depart;
 	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="id_destination")
-	private transient Ville destination ;
+	private Ville destination ;
 	private double distance;
 	
 	

@@ -14,7 +14,7 @@ public class Ville {
 	
 	@ManyToOne
 	@JoinColumn(name="id_departement")
-	private transient Departement departement;
+	private  Departement departement;
 	
 	
 	public Ville(int id,String nom, String carac, Departement departement) {
