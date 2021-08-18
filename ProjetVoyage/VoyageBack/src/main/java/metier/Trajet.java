@@ -1,9 +1,24 @@
 package metier;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Trajet {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private Ville depart;
-	private Ville destination ;
+	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="id_depart")
+	private transient Ville depart;
+	@ManyToOne(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="id_destination")
+	private transient Ville destination ;
 	private double distance;
 	
 	

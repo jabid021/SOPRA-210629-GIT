@@ -2,12 +2,26 @@ package metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+@Entity
 public class Voyage implements Serializable{
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@ManyToOne
+	@JoinColumn(name="id_trajet", columnDefinition="int")
 	private Trajet trajet;
+	@ManyToOne
+	@JoinColumn(name="id_transport", columnDefinition="int")
 	private Transport transport;
 	//En jour
+	@Column(name="duree", columnDefinition="int")
 	private int dureeSejour;
 
 

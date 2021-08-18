@@ -24,9 +24,9 @@ public class Context {
 	private List<Voyage> panier = new ArrayList();
 	private IDAODepartement daoD = new DAODepartementJDBC();
 	private IDAOCompte daoC = new DAOCompteJDBC();
-	private IDAOTrajet daoT = new DAOTrajetJDBC();
-	private IDAOVille daoVi = new DAOVilleJDBC();
-	private IDAOVoyage daoVo = new DAOVoyageJDBC();
+	private IDAOTrajet daoT = new DAOTrajetJPA();
+	private IDAOVille daoVi = new DAOVilleJPA();
+	private IDAOVoyage daoVo = new DAOVoyageJPA();
 	private IDAOTransport daoTransport = new DAOTransportJDBC();
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage-persistence");
