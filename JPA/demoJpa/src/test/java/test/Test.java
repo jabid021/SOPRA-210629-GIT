@@ -6,14 +6,79 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import model.Cuisinier;
 import model.Ingredient;
 import model.Plat;
 import model.Recette;
 import model.Unite;
+import util.Context;
 
 public class Test {
+	
+	
+	public static Recette findById(int id) 
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		Recette r = em.find(Recette.class,id);
+		em.close();
+		return r;
+	}
+	
+	public static List<Recette> findAll()
+	{
+		
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		//Query query= em.createQuery("from Recette",Recette.class);
+		//List<Recette> recettes = query.getResultList();
+		List<Recette> recettes = em.createQuery("from Recette",Recette.class).getResultList();
+		em.close();
+		return recettes;
+	}
+	
+	public static Recette insert(Recette r) 
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(r);
+		em.getTransaction().commit();
+		em.close();
+		return r;
+	}
+	
+	public static Recette update(Recette nonManaged) 
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Recette managed=em.merge(nonManaged);
+		em.getTransaction().commit();
+		em.close();
+		return managed;
+	}
+	
+	public static void delete(int id) 
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		Recette r = em.find(Recette.class,id);
+		em.getTransaction().begin();
+		em.remove(r);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public static void delete(Recette r) 
+	{
+		
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		r=em.merge(r);
+		em.remove(r);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	
 	public static void testHeritage() 
 	{
@@ -75,27 +140,31 @@ public class Test {
 		ingredients.add(i6);
 		
 		Plat p = new Plat("crepes",sanji);
-		
 		Recette r = new Recette(p,ingredients);
+		
+		
+		//insert(r);
+		
+		
+		Recette re = findById(1);
+		re.setPlat(null);
+		update(re);
+		delete(re);
+		
+		
+		//System.out.println(re.getPlat());
+		//System.out.println("Recette des : "+re.getPlat().getNom());
+		//System.out.println("Liste des ingredients : ");
 	
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("toto");
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		
-		em.persist(i1);
-		em.persist(i2);
+		//System.out.println(re.getIngredients());
 	
-		em.getTransaction().commit();
 		
+		Context.getInstance().closeEmf();
 	
-		System.out.println(em.find(Ingredient.class, 1));
-		System.out.println(em.find(Ingredient.class, 2));
-		
-		em.close();
-		emf.close();
-		
-
+		//em.persist(test) => test est managed
+		//test=em.find() => test est managed
+		//test2 = em.merge(test) => test n'est pas managed par contre test2 l'est !
+		//em.remove(test) => test est removed
 	}
 
 }
