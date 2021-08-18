@@ -37,6 +37,27 @@ public class Test {
 		return recettes;
 	}
 	
+	
+	public static List<Ingredient> findByLibelleLike(String libelle)
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		Query query= em.createQuery("from Ingredient i where i.nom like :lib",Ingredient.class);
+		query.setParameter("lib", "%"+libelle+"%");
+		List<Ingredient> ingredients = query.getResultList();
+		em.close();
+		return ingredients;
+	}
+	
+	public static Ingredient findByLibelle(String libelle)
+	{
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		Query query= em.createQuery("from Ingredient i where i.nom = :lib",Ingredient.class);
+		query.setParameter("lib", libelle);
+		Ingredient ingredient = (Ingredient) query.getSingleResult();
+		em.close();
+		return ingredient;
+	}
+	
 	public static Recette insert(Recette r) 
 	{
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
@@ -143,14 +164,14 @@ public class Test {
 		Recette r = new Recette(p,ingredients);
 		
 		
-		//insert(r);
+		r= insert(r);
 		
 		
-		Recette re = findById(1);
-		re.setPlat(null);
-		update(re);
-		delete(re);
+		System.out.println("Ingredients avec un 'e' : ");
+		System.out.println(findByLibelleLike("e"));
 		
+		System.out.println("\nIngredient lait : ");
+		System.out.println(findByLibelle("lait"));
 		
 		//System.out.println(re.getPlat());
 		//System.out.println("Recette des : "+re.getPlat().getNom());

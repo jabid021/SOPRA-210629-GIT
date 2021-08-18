@@ -9,13 +9,11 @@ import javax.persistence.Persistence;
 import dao.IDAOCompte;
 import dao.IDAODepartement;
 import dao.IDAOTrajet;
+import dao.IDAOTransport;
 import dao.IDAOVille;
 import dao.IDAOVoyage;
-import dao.jdbc.DAOCompteJDBC;
-import dao.jdbc.DAOTrajetJDBC;
-import dao.jdbc.DAOVilleJDBC;
-import dao.jdbc.DAOVoyageJDBC;
-import dao.jpa.DAODepartementJPA;
+import dao.jdbc.*;
+import dao.jpa.*;
 import metier.Compte;
 import metier.Voyage;
 
@@ -24,11 +22,12 @@ public class Context {
 
 	private Compte connected=null;
 	private List<Voyage> panier = new ArrayList();
-	private IDAODepartement daoD = new DAODepartementJPA();
+	private IDAODepartement daoD = new DAODepartementJDBC();
 	private IDAOCompte daoC = new DAOCompteJDBC();
 	private IDAOTrajet daoT = new DAOTrajetJDBC();
 	private IDAOVille daoVi = new DAOVilleJDBC();
 	private IDAOVoyage daoVo = new DAOVoyageJDBC();
+	private IDAOTransport daoTransport = new DAOTransportJDBC();
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage-persistence");
 
@@ -84,6 +83,18 @@ public class Context {
 	public IDAOVoyage getDaoVo() {
 		return daoVo;
 	}
+
+	public IDAOTransport getDaoTransport() {
+		return daoTransport;
+	}
+
+
+
+	public void setDaoTransport(IDAOTransport daoTransport) {
+		this.daoTransport = daoTransport;
+	}
+
+
 
 	public EntityManagerFactory getEmf() {
 		return emf;

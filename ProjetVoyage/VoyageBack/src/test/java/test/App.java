@@ -19,11 +19,13 @@ import metier.Admin;
 import metier.Client;
 import metier.Compte;
 import metier.Departement;
+import metier.OldTransport;
 import metier.Region;
 import metier.Trajet;
 import metier.Transport;
 import metier.Ville;
 import metier.Voyage;
+import util.Context;
 
 public class App {
 
@@ -57,7 +59,9 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(System.getProperty("os.name"));
+	
+		Context.getInstance().getEmf();
+		Context.getInstance().closeEmf();
 		menuPrincipal();
 	}
 
@@ -200,14 +204,14 @@ public class App {
 	public static void addVoyage() {
 
 		int duree = saisieInt("Saisir la duree du voyage");
-		System.out.println(Arrays.toString(Transport.values()));
+		System.out.println(Arrays.toString(OldTransport.values()));
 		String choixTransport=saisieString("Choix du transport");
 		System.out.println(daoT.findAll());
 		int id = saisieInt("Saisir l'id du trajet");
 
 		Trajet t = new Trajet(id);
-
-		Voyage v = new Voyage(t,Transport.valueOf(choixTransport),duree);
+		Transport transport = new Transport(1,"Avion",500);
+		Voyage v = new Voyage(t,transport,duree);
 
 		daoVo.insert(v);
 

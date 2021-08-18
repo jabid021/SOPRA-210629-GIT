@@ -38,7 +38,8 @@ public class DAOVoyageJDBC  implements IDAOVoyage {
 			{
 				
 				Trajet t = daoTrajet.findById(rs.getInt("id_trajet"));
-				Voyage v = new Voyage(rs.getInt("id"), t, Transport.valueOf(rs.getString("transport.nom")), rs.getInt("duree"));
+				Transport transport = new Transport(rs.getInt("transport.id"),rs.getString("transport.nom"),rs.getInt("transport.vitesse"));
+				Voyage v = new Voyage(rs.getInt("id"), t,transport, rs.getInt("duree"));
 				voyages.add(v);
 			}
 
@@ -126,8 +127,9 @@ public class DAOVoyageJDBC  implements IDAOVoyage {
             {
 
                 Trajet t = daoTrajet.findById(rs.getInt("id_trajet"));
-                Voyage v = new Voyage(rs.getInt("id"), t, Transport.valueOf(rs.getString("transport.nom")), rs.getInt("duree"));
-                voyages.add(v);
+                Transport transport = new Transport(rs.getInt("transport.id"),rs.getString("transport.nom"),rs.getInt("transport.vitesse"));
+				Voyage v = new Voyage(rs.getInt("id"), t,transport, rs.getInt("duree"));
+				voyages.add(v);
             }
 
             conn.close();
