@@ -26,7 +26,7 @@ public class Context {
 	private IDAOCompte daoC = new DAOCompteJDBC();
 	private IDAOTrajet daoT = new DAOTrajetJDBC();
 	private IDAOVille daoVi = new DAOVilleJPA();
-	private IDAOVoyage daoVo = new DAOVoyageJDBC();
+	private IDAOVoyage daoVo = new DAOVoyageJPA();
 	private IDAOTransport daoTransport = new DAOTransportJDBC();
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage-persistence");
