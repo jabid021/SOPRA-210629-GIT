@@ -25,7 +25,7 @@ public class Context {
 	private IDAODepartement daoD = new DAODepartementJDBC();
 	private IDAOCompte daoC = new DAOCompteJDBC();
 	private IDAOTrajet daoT = new DAOTrajetJDBC();
-	private IDAOVille daoVi = new DAOVilleJDBC();
+	private IDAOVille daoVi = new DAOVilleJPA();
 	private IDAOVoyage daoVo = new DAOVoyageJDBC();
 	private IDAOTransport daoTransport = new DAOTransportJDBC();
 
