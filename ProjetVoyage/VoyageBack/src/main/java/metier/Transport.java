@@ -1,14 +1,23 @@
 package metier;
 
-public enum Transport {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	Voiture(1,80), Train(2,300), Avion (3,900), TukTuk (4,20);
+@Entity
+public class Transport {
 
-	private int vitesse;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private Transport(int id,int vitesse) 
+	private String nom;
+	private int vitesse;
+	
+	public Transport(int id,String nom,int vitesse) 
 	{
+		this.nom=nom;
 		this.vitesse=vitesse;
 		this.id=id;
 	}
@@ -29,11 +38,24 @@ public enum Transport {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 
-	public String toString() 
-	{
-		return this.name()+" ("+vitesse+" km/h)";
+	public String getNom() {
+		return nom;
 	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	@Override
+	public String toString() {
+		return "Transport [nom=" + nom + ", vitesse=" + vitesse + ", id=" + id + "]";
+	}
+
+
+
+	
 	
 	
 	
