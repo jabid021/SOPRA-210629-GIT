@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.IDAOTrajet;
+import dao.IDAOTransport;
 import dao.IDAOVoyage;
 import metier.Trajet;
 import metier.Transport;
@@ -23,12 +24,13 @@ public class ControlVoyage extends HttpServlet {
        
 	private IDAOVoyage daov = Context.getInstance().getDaoVo();
 	private IDAOTrajet daot =Context.getInstance().getDaoT();
+	private IDAOTransport daoTr = Context.getInstance().getDaoTransport();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		List<Voyage> v = daov.findAll();
 		List<Trajet> t = daot.findAll();
-		List<Transport> transports = new ArrayList<Transport>(Arrays.asList(Transport.values()));
+		List<Transport> transports = daoTr.findAll();
 		request.setAttribute("transports", transports);
         request.setAttribute("trajets", t);
 		request.setAttribute("voyages", v);
@@ -52,7 +54,8 @@ public class ControlVoyage extends HttpServlet {
 			Voyage v=null;
 			
 			Trajet trajet = daot.findById( Integer.parseInt(request.getParameter("id_trajet")));
-			v=new Voyage(trajet ,Transport.valueOf(request.getParameter("id_transport")), Integer.parseInt(request.getParameter("duree")));
+			Transport transport = daoTr.findByLibelle(request.getParameter("id_transport"));
+			v=new Voyage(trajet ,transport, Integer.parseInt(request.getParameter("duree")));
 			
 
 			daov.insert(v);
@@ -69,7 +72,8 @@ public class ControlVoyage extends HttpServlet {
 		Voyage v=null;
 
 		Trajet trajet = daot.findById( Integer.parseInt(request.getParameter("id_trajet")));
-		v=new Voyage(id, trajet ,Transport.valueOf(request.getParameter("id_transport")), Integer.parseInt(request.getParameter("duree")));
+		Transport transport = daoTr.findByLibelle(request.getParameter("id_transport"));
+		v=new Voyage(id, trajet ,transport, Integer.parseInt(request.getParameter("duree")));
 		
 	
 

@@ -3,10 +3,19 @@ package metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+@Entity	
+@DiscriminatorValue("client")
 public class Client extends Compte {
 
 	
-	private List<Voyage> achats = new ArrayList();
+	//@ManyToMany
+	//@JoinTable(name="achat")
+	private transient List<Voyage> achats = new ArrayList();
 	
 	public Client() {}
 	

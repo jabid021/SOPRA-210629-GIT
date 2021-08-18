@@ -1,9 +1,23 @@
 package metier;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('admin', 'client')")
 public abstract class Compte {
 
+	@Id
 	protected int id;
+	
+	@Column(length = 25)
 	protected String login;
+	@Column(columnDefinition = "VARCHAR(100)")
 	protected String password;
 	
 	
