@@ -15,6 +15,8 @@ public class Transport {
 	private String nom;
 	private int vitesse;
 	
+	public Transport() {}
+	
 	public Transport(int id,String nom,int vitesse) 
 	{
 		this.nom=nom;
