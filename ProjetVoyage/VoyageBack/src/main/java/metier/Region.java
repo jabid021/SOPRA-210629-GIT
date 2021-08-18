@@ -13,5 +13,10 @@ public enum Region {
     Nouvelle_Aquitaine,
     Occitanie,
     Pays_de_la_Loire,
-    Provence_Alpes_Cote_d_Azur;
+    Provence_Alpes_C�te_d_Azur,
+    Guadeloupe,
+    Martinique,
+    Guyane,
+    Reunion,
+    Mayotte;
 }

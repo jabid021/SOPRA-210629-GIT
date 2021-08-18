@@ -22,7 +22,7 @@ public class Context {
 
 	private Compte connected=null;
 	private List<Voyage> panier = new ArrayList();
-	private IDAODepartement daoD = new DAODepartementJDBC();
+	private IDAODepartement daoD = new DAODepartementJPA();
 	private IDAOTrajet daoT = new DAOTrajetJPA();
 	private IDAOCompte daoC = new DAOCompteJPA();
 	private IDAOVille daoVi = new DAOVilleJPA();
