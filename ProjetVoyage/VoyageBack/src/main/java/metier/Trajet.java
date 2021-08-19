@@ -1,12 +1,14 @@
 package metier;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Trajet {
@@ -20,6 +22,7 @@ public class Trajet {
 	@JoinColumn(name="id_destination")
 	private Ville destination ;
 	private double distance;
+	
 	
 	public Trajet() {}
 	public Trajet(Ville depart, Ville destination, double distance) {
@@ -74,6 +77,7 @@ public class Trajet {
 		this.id = id;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Trajet [id=" + id + ", depart=" + depart + ", destination=" + destination + ", distance=" + distance

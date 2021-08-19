@@ -7,6 +7,8 @@ public class Departement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+
 	private String nom;
 	private String numero;
 	@Enumerated(EnumType.STRING)
