@@ -1,6 +1,15 @@
 package metier;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Ville {
@@ -16,6 +25,10 @@ public class Ville {
 	@JoinColumn(name="id_departement")
 	private  Departement departement;
 	
+	@OneToMany(mappedBy = "depart" )
+	private List<Trajet> trajetsDepart;
+	@OneToMany(mappedBy = "destination" )
+	private List<Trajet> trajetsDestination;
 	
 	public Ville(int id,String nom, String carac, Departement departement) {
 		this.id=id;
@@ -77,6 +90,26 @@ public class Ville {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public List<Trajet> getTrajetsDepart() {
+		return trajetsDepart;
+	}
+
+
+	public void setTrajetsDepart(List<Trajet> trajetsDepart) {
+		this.trajetsDepart = trajetsDepart;
+	}
+
+
+	public List<Trajet> getTrajetsDestination() {
+		return trajetsDestination;
+	}
+
+
+	public void setTrajetsDestination(List<Trajet> trajetsDestination) {
+		this.trajetsDestination = trajetsDestination;
 	}
 
 
