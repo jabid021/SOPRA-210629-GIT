@@ -10,13 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name="seqIngredient",sequenceName ="seqIngredient", initialValue=10 )
 public class Ingredient {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(generator = "seqIngredient")
+	private int id;	
 	private String nom;
 	private double quantite;
 	
