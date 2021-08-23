@@ -14,7 +14,7 @@
 	<bean id="demoAspect" class="formationSpring.aspect.DemoAspect"></bean>
 	<aop:config>
 		<aop:pointcut
-			expression="execution(* formationSpring.*.jouer())" id="pointcut" />
+			expression="execution(* formationSpring.Guitariste.jouer())" id="pointcut" />
 		<aop:aspect ref="demoAspect" id="monAspect">
 			<aop:before method="before" pointcut-ref="pointcut" />
 			<aop:after-returning method="afterReturning"
