@@ -6,8 +6,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	
+
 	<context:annotation-config></context:annotation-config>
-	
-	<context:component-scan base-package="formationSpring"></context:component-scan>
+
+	<context:component-scan
+		base-package="formationSpring"></context:component-scan>
+	<bean id="demoAspect" class="formationSpring.aspect.DemoAspect"></bean>
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* formationSpring.*.jouer())" id="pointcut" />
+		<aop:aspect ref="demoAspect" id="monAspect">
+			<aop:before method="before" pointcut-ref="pointcut" />
+			<aop:after-returning method="afterReturning"
+				pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+
 </beans>
