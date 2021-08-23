@@ -7,5 +7,12 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<bean id="guitariste1" class="formationSpring.Guitariste"></bean>
+	<bean id="guitare" class="formationSpring.Guitare"></bean>
+	
+	<bean id="piano" class="formationSpring.Piano"></bean>
+	<bean id="guitariste1" class="formationSpring.Guitariste">
+		<property name="instrument" ref="piano"></property>
+	</bean>
+	<bean id="guitariste2" class="formationSpring.Guitariste"></bean>
+	
 </beans>
