@@ -9,12 +9,15 @@ public class AppSpring {
 	@Qualifier("pianiste")
 	private Musicien musicien;
 
+
+
 	public AppSpring() {
 
 	}
 
 	public void run(String[] args) {
-		System.out.println("dans le run");
+
 		musicien.jouer();
+	
 	}
 }
