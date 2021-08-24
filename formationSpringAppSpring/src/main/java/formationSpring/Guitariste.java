@@ -26,6 +26,7 @@ public class Guitariste implements Musicien {
 	@Override
 	public void jouer() {
 		System.out.println("le guitarite joue " + this.instrument.toString());
+		throw new RuntimeException();
 	}
 
 	@Override

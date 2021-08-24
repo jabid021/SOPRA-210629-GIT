@@ -13,10 +13,11 @@ import org.springframework.stereotype.Component;
 
 import formationSpring.Guitariste;
 
-@Component
-@Aspect
 public class MonAspect {
 
+	
+	
+	
 	@Pointcut("execution(* formationSpring.Musicien.jouer())")
 	public void pointcut() {
 	}
@@ -38,7 +39,11 @@ public class MonAspect {
 
 	@AfterThrowing(pointcut = "pointcut()")
 	public void afterThrowing() {
-		System.out.println("methode afterThrowing");
+		methode();
+	}
+	
+	private void methode() {
+		System.out.println("une methode");
 	}
 
 	@After("pointcut()")

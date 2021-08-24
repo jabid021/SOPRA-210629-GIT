@@ -7,8 +7,8 @@ public class Pianiste implements Musicien {
 
 	@Override
 	public void jouer() {
-		//System.out.println("jouer du pianiste");
-		throw new NullPointerException();
+		System.out.println("jouer du pianiste");
+		//throw new RuntimeException();
 	}
 
 	@Override
