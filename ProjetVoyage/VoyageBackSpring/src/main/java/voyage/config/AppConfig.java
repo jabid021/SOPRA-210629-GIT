@@ -1,4 +1,4 @@
-package eshop.config;
+package voyage.config;
 
 import java.util.Properties;
 
@@ -7,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -20,11 +19,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-
+@EnableJpaRepositories("voyage.repositories")
 @PropertySource("classpath:infos.properties")
-@EnableJpaRepositories("eshop.repositories")
 public class AppConfig {
-
 	@Autowired
 	private Environment env;
 
@@ -43,7 +40,7 @@ public class AppConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("eshop.model");
+		emf.setPackagesToScan("voyage.metier");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "validate");
@@ -65,5 +62,4 @@ public class AppConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-
 }
