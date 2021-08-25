@@ -90,7 +90,5 @@ public class Produit {
 			return false;
 		return true;
 	}
-	
-	
 
 }
