@@ -3,9 +3,10 @@ package voyage.metier;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name = "seqDepartement", sequenceName = "seq_departement", initialValue = 100, allocationSize = 1)
 public class Departement {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDepartement")
 	private int id;
 
 	private String nom;
@@ -91,7 +92,5 @@ public class Departement {
 			return false;
 		return true;
 	}
-	
-	
 
 }
