@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -11,7 +12,7 @@ public class Fournisseur extends Personne {
 
 	@Column(name = "society")
 	private String societe;
-	@OneToMany(mappedBy = "fournisseur")
+	@OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY)
 	private List<Produit> produits;
 
 	public Fournisseur() {
