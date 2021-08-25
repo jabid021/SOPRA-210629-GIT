@@ -1,16 +1,16 @@
-package eshop.test;
+package test;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import eshop.AppSpring;
-import eshop.config.AppConfig;
+import voyage.Principal;
+import voyage.config.AppConfig;
 
-public class AppTest {
+public class App {
+
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		//spring
-		ctx.getBeanFactory().createBean(AppSpring.class).run(args);
-		//fin spring
+		ctx.getBeanFactory().createBean(Principal.class).run(args);
 		ctx.close();
 	}
+
 }
