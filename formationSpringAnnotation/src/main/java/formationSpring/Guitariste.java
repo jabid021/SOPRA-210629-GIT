@@ -32,4 +32,18 @@ public class Guitariste implements Musicien {
 	public void changerInstrument(Instrument instrument) {
 		this.setInstrument(instrument);
 	}
+
+	@Override
+	public String toString() {
+		return "Guitariste [instrument=" + instrument + "]";
+	}
+	
+	public String jeJoue() {
+		try {
+		return("je joue cet instrument : "+instrument.toString());
+		}catch(Exception e){
+			e.printStackTrace();
+			return("je ne joue rien ");
+		}
+	}
 }
