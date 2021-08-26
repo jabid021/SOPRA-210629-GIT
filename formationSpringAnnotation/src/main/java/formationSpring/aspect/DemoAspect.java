@@ -9,6 +9,4 @@ public class DemoAspect {
 	public void afterReturning() {
 		System.out.println("methode afterReturning de DemoAspect");
 	}
-	
-	
 }

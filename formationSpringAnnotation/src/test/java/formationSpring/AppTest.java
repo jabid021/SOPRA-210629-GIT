@@ -10,7 +10,7 @@ public class AppTest {
 		//musicien=ctx.getBean(Musicien.class);
 		musicien=ctx.getBean("guitariste", Musicien.class);
 		musicien.jouer();
-		System.out.println(musicien.toString());
+		
 		ctx.close();
 	}
 }

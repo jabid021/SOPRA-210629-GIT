@@ -11,25 +11,14 @@
 
 	<context:component-scan
 		base-package="formationSpring"></context:component-scan>
-	<bean id="demoAspect"
-		class="formationSpring.aspect.MonAspectInterceptor"></bean>
-
-
+	<bean id="demoAspect" class="formationSpring.aspect.DemoAspect"></bean>
 	<aop:config>
 		<aop:pointcut
-<<<<<<< Updated upstream
 			expression="execution(* formationSpring.Guitariste.jouer())" id="pointcut" />
 		<aop:aspect ref="demoAspect" id="monAspect">
 			<aop:before method="before" pointcut-ref="pointcut" />
 			<aop:after-returning method="afterReturning"
 				pointcut-ref="pointcut" />
-=======
-			expression="execution(* formationSpring.Musicien.toString())"
-			id="pointcut2" />
-		<aop:aspect ref="demoAspect" id="monAspectInterceptor">
-			<aop:before method="interceptToString"
-				pointcut-ref="pointcut2" />
->>>>>>> Stashed changes
 		</aop:aspect>
 	</aop:config>
 
