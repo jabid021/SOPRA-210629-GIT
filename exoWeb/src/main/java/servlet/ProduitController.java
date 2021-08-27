@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -73,11 +75,15 @@ public class ProduitController extends HttpServlet {
 		if (error) {
 			// retour vers formulaire
 			rd = request.getRequestDispatcher("WEB-INF/produit/edit.jsp?error=error");
-			//request.setAttribute("error", true);
+			// request.setAttribute("error", true);
 		} else {
 			// affichage du produit
 			request.setAttribute("produit", new Produit(nom, prix, null));
 			rd = request.getRequestDispatcher("WEB-INF/produit/info.jsp");
+			List<Produit> produits = Arrays.asList(
+					new Produit("produit1", 10, null),
+					new Produit("produit2", 333, null));
+			request.setAttribute("produits", produits);
 		}
 		rd.forward(request, response);
 	}
