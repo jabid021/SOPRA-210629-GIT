@@ -22,4 +22,5 @@ public interface DepartementRepository extends JpaRepository<Departement, Intege
 
 	@Query("select distinct d from Departement d where d.nom like :lib or d.numero like :lib or d.region like :lib")
 	List<Departement> filterDepartement(@Param("lib") String texte);
+	
 }
