@@ -42,7 +42,7 @@ public class DisplayPrenomController extends HttpServlet {
 			// probleme
 			request.setAttribute("prenom", "toto");
 		}
-		rd = request.getRequestDispatcher("WEB-INF/displayPrenom.jsp");
+		rd = request.getRequestDispatcher("WEB-INF/displayPrenom.jsp?error=");
 		rd.forward(request, response);
 
 	}
