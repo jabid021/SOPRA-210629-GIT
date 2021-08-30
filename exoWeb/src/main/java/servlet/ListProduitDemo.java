@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import eshop.config.AppConfig;
@@ -33,8 +34,11 @@ public class ListProduitDemo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ApplicationContext ctx = (ApplicationContext) this.getServletContext().getAttribute("spring");
+		ProduitRepository produitRepo = ctx.getBean(ProduitRepository.class);
+		this.getServletContext().setAttribute("produits", produitRepo.findAll());
+		request.getRequestDispatcher("WEB-INF/produit/list.jsp").forward(request, response);
 
-		response.getWriter().print(this.getServletContext().getAttribute("hello"));
 	}
 
 	/**
