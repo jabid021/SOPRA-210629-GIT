@@ -29,6 +29,14 @@ public class Produit {
 		this.fournisseur = fournisseur;
 	}
 
+	public Produit(Integer id, String libelle, double prix, Fournisseur fournisseur) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.fournisseur = fournisseur;
+	}
+
 	public Integer getId() {
 		return id;
 	}

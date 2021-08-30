@@ -13,15 +13,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>liste des produits</h1>
-	<table class="table">
-		<c:forEach items="${applicationScope.produits}" var="produit">
-			<tr>
-				<td>${produit.id}</td>
-				<td>${produit.libelle}</td>
-				<td>${produit.prix}</td>
-			</tr>
-		</c:forEach>
-	</table>
+	<div class="container">
+		<h1>liste des produits</h1>
+		<c:if test="${delete!=null}">
+			<div class="alert alert-primary">produit ${delete} supprimé</div>
+		</c:if>
+		<table class="table">
+			<c:forEach items="${produits}" var="produit">
+				<tr>
+					<td>${produit.id}</td>
+					<td>${produit.libelle}</td>
+					<td>${produit.prix}</td>
+					<td><a href="crudproduit?q=edit&id=${produit.id}">editer</a></td>
+					<td><a href="crudproduit?q=delete&id=${produit.id}"
+						class="btn btn-outline-danger">supprimer</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<a class="btn btn-link" href="crudproduit?q=add">nouveau produit</a>
+	</div>
 </body>
 </html>
