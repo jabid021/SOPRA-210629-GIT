@@ -17,5 +17,6 @@
 			name="prix" type="number" value="0">
 		<button type="submit">envoyer</button>
 	</form>
+	<div>${hello}</div>
 </body>
 </html>
