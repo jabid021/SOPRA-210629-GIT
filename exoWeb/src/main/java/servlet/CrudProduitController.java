@@ -17,7 +17,7 @@ import eshop.repositories.ProduitRepository;
 /**
  * Servlet implementation class CrudProduitController
  */
-@WebServlet("/crudproduit")
+@WebServlet({"/crudproduit"})
 public class CrudProduitController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
