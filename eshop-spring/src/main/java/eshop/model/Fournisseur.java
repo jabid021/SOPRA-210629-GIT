@@ -9,10 +9,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Fournisseur extends Personne {
+	// renseigne + 2 caracteres min
 
 	@Column(name = "society")
 	private String societe;
-	@OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "fournisseur", fetch = FetchType.LAZY)
 	private List<Produit> produits;
 
 	public Fournisseur() {
