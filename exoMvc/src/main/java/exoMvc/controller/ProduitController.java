@@ -1,9 +1,13 @@
 package exoMvc.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,10 +49,18 @@ public class ProduitController {
 		return "produit/edit";
 	}
 
+//	@PostMapping("/save")
+//	private String save(@RequestParam String libelle, @RequestParam double prix,
+//			@RequestParam(name = "id", required = false) Integer id) {
+//		Produit produit = new Produit(id, libelle, prix, null);
+//		produitRepo.save(produit);
+//		return "redirect:/produit/";
+//	}
 	@PostMapping("/save")
-	private String save(@RequestParam String libelle, @RequestParam double prix,
-			@RequestParam(name = "id", required = false) Integer id) {
-		Produit produit = new Produit(id, libelle, prix, null);
+	public String save(@Valid @ModelAttribute("produit") Produit produit, BindingResult br, Model model) {
+		if (br.hasErrors()) {
+			return goEdit(produit, model);
+		}
 		produitRepo.save(produit);
 		return "redirect:/produit/";
 	}

@@ -10,11 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import eshop.validators.Majeur;
+
 @Entity
 public class Client extends Personne{
 
 	private int age;
 	@Column(name="date_naissance")
+	@Majeur
 	private LocalDate dateNaissance;
 	
 	@ManyToMany

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Produit {
@@ -13,7 +15,9 @@ public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
+	@NotEmpty
 	private String libelle;
+	@Min(1)
 	private double prix;
 
 	@ManyToOne

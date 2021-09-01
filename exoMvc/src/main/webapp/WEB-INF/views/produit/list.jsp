@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<c:set var="ctx" value="${pageContext.servletContext.contextPath}" />
 <html>
 <head>
 <link
@@ -24,13 +25,13 @@
 					<td>${produit.id}</td>
 					<td>${produit.libelle}</td>
 					<td>${produit.prix}</td>
-					<td><a href="edit?id=${produit.id}">editer</a></td>
-					<td><a href="delete?id=${produit.id}"
+					<td><a href="${ctx}/produit/edit?id=${produit.id}">editer</a></td>
+					<td><a href="${ctx}/produit/delete?id=${produit.id}"
 						class="btn btn-outline-danger">supprimer</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-link" href="add">nouveau produit</a>
+		<a class="btn btn-link" href="${ctx}/produit/add">nouveau produit</a>
 	</div>
 </body>
 </html>

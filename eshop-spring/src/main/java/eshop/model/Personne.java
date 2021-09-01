@@ -13,6 +13,9 @@ public abstract class Personne {
 	protected String nom;
 	@Column(name = "firstname")
 	protected String prenom;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "civilite", length = 4)
+	private Civilite civilite;
 
 	public Personne() {
 	}
@@ -52,6 +55,14 @@ public abstract class Personne {
 		this.prenom = prenom;
 	}
 
+	public Civilite getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(Civilite civilite) {
+		this.civilite = civilite;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,5 +88,4 @@ public abstract class Personne {
 		return true;
 	}
 
-	
 }
