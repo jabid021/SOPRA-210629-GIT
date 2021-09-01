@@ -1,7 +1,6 @@
 package eshop.validators;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
 
 import javax.validation.ConstraintValidator;

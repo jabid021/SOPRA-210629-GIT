@@ -6,11 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Fournisseur extends Personne {
-	// renseigne + 2 caracteres min
-
+	@Size(min = 2, message = "le nom de la societe doit etre de 2 caracteres")
 	@Column(name = "society")
 	private String societe;
 	@OneToMany(mappedBy = "fournisseur", fetch = FetchType.LAZY)
@@ -23,6 +23,10 @@ public class Fournisseur extends Personne {
 	public Fournisseur(String nom, String prenom, String societe) {
 		super(nom, prenom);
 		this.societe = societe;
+	}
+
+	public String getInfos() {
+		return id + " " + prenom + " " + nom + " " + societe;
 	}
 
 	public List<Produit> getProduits() {

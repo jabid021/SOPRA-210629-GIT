@@ -1,6 +1,7 @@
 package eshop.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -9,9 +10,11 @@ public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	protected Integer id;
+	@Size(min = 2)
 	@Column(name = "lastname")
 	protected String nom;
 	@Column(name = "firstname")
+	@Size(min = 2)
 	protected String prenom;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "civilite", length = 4)

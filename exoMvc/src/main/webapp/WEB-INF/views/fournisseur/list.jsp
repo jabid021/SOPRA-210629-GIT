@@ -15,24 +15,32 @@
 </head>
 <body>
 	<div class="container">
-		<h1>liste des produits</h1>
-		<c:if test="${delete!=null}">
-			<div class="alert alert-primary">produit ${delete} supprimé</div>
-		</c:if>
+		<h1>liste des fournisseurs</h1>
+		<a href="${ctx}/fournisseur/add" class="btn btn-link">ajouter</a>
 		<table class="table">
-			<c:forEach items="${produits}" var="produit">
+			<tr>
+				<th>id:</th>
+				<th>civilte</th>
+				<th>prenom</th>
+				<th>nom</th>
+				<th>societe</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<c:forEach items="${fournisseurs}" var="f">
 				<tr>
-					<td>${produit.id}</td>
-					<td>${produit.libelle}</td>
-					<td>${produit.prix}</td>
-					<td>${produit.fournisseur.infos}</td>
-					<td><a href="${ctx}/produit/edit?id=${produit.id}">editer</a></td>
-					<td><a href="${ctx}/produit/delete?id=${produit.id}"
+					<td>${f.id}</td>
+					<td>${f.civilite }</td>
+					<td>${f.prenom }</td>
+					<td>${f.nom }</td>
+					<td>${f.societe }</td>
+					<td><a href="${ctx}/fournisseur/edit/${f.id}"
+						class="btn btn-outline-primary">editer</a></td>
+					<td><a href="${ctx}/fournisseur/delete/${f.id}"
 						class="btn btn-outline-danger">supprimer</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-link" href="${ctx}/produit/add">nouveau produit</a>
 	</div>
 </body>
 </html>

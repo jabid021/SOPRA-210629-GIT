@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import eshop.model.Produit;
+import eshop.repositories.FournisseurRepository;
 import eshop.repositories.ProduitRepository;
 
 @Controller
@@ -21,6 +22,8 @@ public class ProduitController {
 
 	@Autowired
 	ProduitRepository produitRepo;
+	@Autowired
+	FournisseurRepository fournisseurRepo;
 
 	@GetMapping("")
 	public String list(Model model) {
@@ -45,6 +48,7 @@ public class ProduitController {
 	}
 
 	private String goEdit(Produit produit, Model model) {
+		model.addAttribute("fournisseurs", fournisseurRepo.findAll());
 		model.addAttribute("produit", produit);
 		return "produit/edit";
 	}
@@ -58,10 +62,15 @@ public class ProduitController {
 //	}
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("produit") Produit produit, BindingResult br, Model model) {
+		System.out.println(produit.getFournisseur());
+		if (produit.getFournisseur().getId() == null) {
+			produit.setFournisseur(null);
+		}
 		if (br.hasErrors()) {
 			return goEdit(produit, model);
 		}
 		produitRepo.save(produit);
+		System.out.println(produit.getFournisseur());
 		return "redirect:/produit/";
 	}
 }

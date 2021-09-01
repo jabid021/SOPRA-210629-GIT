@@ -38,7 +38,7 @@
 		<!-- 				<button type="submit" class="btn btn-outline-primary">envoyer</button> -->
 		<!-- 			</div> -->
 		<!-- 		</form> -->
-
+		${produit}
 		<form:form action="${ctx}/produit/save" method="post"
 			modelAttribute="produit">
 			<div class="form-group">
@@ -55,6 +55,14 @@
 				<label for="prix">prix:</label>
 				<form:input type="number" path="prix" cssClass="form-control" />
 				<form:errors path="prix" element="div" cssClass="alert alert-danger"></form:errors>
+			</div>
+			<div class="form-group"> 
+				<form:label path="fournisseur">fournisseur:</form:label>
+				<form:select path="fournisseur.id" cssClass="form-control">
+					<form:option value="">pas de fournisseur</form:option>
+					<form:options items="${fournisseurs}" itemLabel="infos" itemValue="id" />
+				</form:select>
+				<form:errors path="fournisseur"></form:errors>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-outline-primary">envoyer</button>
