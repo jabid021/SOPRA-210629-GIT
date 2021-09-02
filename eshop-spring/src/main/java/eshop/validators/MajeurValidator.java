@@ -10,6 +10,9 @@ public class MajeurValidator implements ConstraintValidator<Majeur, LocalDate> {
 
 	@Override
 	public boolean isValid(LocalDate value, ConstraintValidatorContext context) {
+		if (value == null) {
+			return true;
+		}
 		long annee = ChronoUnit.YEARS.between(value, LocalDate.now());
 		return (annee > 18);
 	}
