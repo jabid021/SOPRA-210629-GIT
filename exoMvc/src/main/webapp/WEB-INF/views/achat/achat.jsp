@@ -16,6 +16,24 @@
 <body>
 	<div class="container">
 		<h1>achats</h1>
+		<table clas="table">
+			<c:forEach items="${produits}" var="p">
+				<form action="${ctx}/achat/addPanier" method="post">
+					<input type="hidden" name="id" value="${p.id}">
+					<tr>
+						<td>${p.libelle}</td>
+						<td>${p.prix}</td>
+						<td><input type="number" id="quantite" name="quantite"
+							class="form-control"></td>
+						<td><button type="submit" class="btn btn-link">ajouter
+								au panier</button></td>
+						<td>${panier.get(p)}</td>
+
+					</tr>
+				</form>
+			</c:forEach>
+		</table>
+		<a href="${ctx}/achat/recap" class="btn btn-link">recapitulatif</a>
 	</div>
 </body>
 </html>
