@@ -45,7 +45,7 @@ public class AchatController {
 
 	private ModelAndView goList(Pageable pageable) {
 		ModelAndView modelAndView = new ModelAndView("achat/achat");
-		modelAndView.addObject("produits", produitRepo.findAll(pageable).iterator());
+		modelAndView.addObject("produits", produitRepo.findAll(pageable));
 		return modelAndView;
 	}
 

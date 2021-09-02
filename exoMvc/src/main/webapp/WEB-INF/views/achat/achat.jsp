@@ -15,9 +15,21 @@
 </head>
 <body>
 	<div class="container">
+	${produits.number }
 		<h1>achats</h1>
+		<c:forEach var="indice" begin="0" end="${produits.totalPages - 1}"
+			step="1">
+			<c:choose>
+				<c:when test="${produits.number == indice }">
+					<a href="?page=${indice}" class="btn btn-link btn-lg">${indice}</a>
+				</c:when>
+				<c:otherwise>
+					<a href="?page=${indice}" class="btn btn-link">${indice}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 		<table clas="table">
-			<c:forEach items="${produits}" var="p">
+			<c:forEach items="${produits.iterator()}" var="p">
 				<form action="${ctx}/achat/addPanier" method="post">
 					<input type="hidden" name="id" value="${p.id}">
 					<tr>
