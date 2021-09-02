@@ -10,6 +10,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import eshop.validators.Majeur;
 
 @Entity
@@ -18,6 +20,7 @@ public class Client extends Personne {
 	private int age;
 	@Column(name = "date_naissance")
 	@Majeur
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
 
 	@OneToMany(mappedBy = "client")

@@ -18,7 +18,7 @@ import javax.persistence.Transient;
 @Table(name = "achat")
 public class Achat {
 	@Id
-	// pour mysql GenerationType.IDENTITY
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
 	@Column(name = "date_achat")

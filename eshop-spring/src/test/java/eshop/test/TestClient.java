@@ -1,8 +1,5 @@
 package eshop.test;
 
-import java.time.LocalDate;
-import java.time.Month;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import eshop.config.AppConfig;
-import eshop.model.Achat;
-import eshop.model.Client;
-import eshop.model.ElementAchat;
-import eshop.model.ElementAchatKey;
-import eshop.model.Produit;
 import eshop.repositories.AchatRepository;
 import eshop.repositories.ClientRepository;
 import eshop.repositories.ElementAchatRepository;

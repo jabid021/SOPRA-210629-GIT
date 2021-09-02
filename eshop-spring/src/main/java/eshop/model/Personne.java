@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 public abstract class Personne {
 
 	@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	protected Integer id;
 	@Size(min = 2)
