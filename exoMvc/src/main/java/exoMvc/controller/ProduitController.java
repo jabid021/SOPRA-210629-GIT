@@ -62,7 +62,6 @@ public class ProduitController {
 //	}
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("produit") Produit produit, BindingResult br, Model model) {
-		System.out.println(produit.getFournisseur());
 		if (produit.getFournisseur().getId() == null) {
 			produit.setFournisseur(null);
 		}
@@ -70,7 +69,6 @@ public class ProduitController {
 			return goEdit(produit, model);
 		}
 		produitRepo.save(produit);
-		System.out.println(produit.getFournisseur());
 		return "redirect:/produit/";
 	}
 }

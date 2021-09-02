@@ -1,7 +1,6 @@
 package eshop.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,37 +8,41 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import eshop.validators.Majeur;
 
 @Entity
-public class Client extends Personne{
+public class Client extends Personne {
 
 	private int age;
-	@Column(name="date_naissance")
+	@Column(name = "date_naissance")
 	@Majeur
 	private LocalDate dateNaissance;
-	
-	@ManyToMany
-	@JoinTable(
-			name="achat",
-			joinColumns = @JoinColumn(name="client"),
-			inverseJoinColumns = @JoinColumn(name="produit")
-		)
-	private List<Produit> produits=new ArrayList();
-	
+
+	@OneToMany(mappedBy = "client")
+	private List<Achat> achats;
+
 	public Client() {
 		super();
 	}
 
-	public Client(String nom, String prenom,int age,LocalDate naissance) {
+	public Client(String nom, String prenom, int age, LocalDate naissance) {
 		super(nom, prenom);
-		this.age=age;
-		this.dateNaissance=naissance;
+		this.age = age;
+		this.dateNaissance = naissance;
 	}
 
 	public int getAge() {
 		return age;
+	}
+
+	public List<Achat> getAchats() {
+		return achats;
+	}
+
+	public void setAchats(List<Achat> achats) {
+		this.achats = achats;
 	}
 
 	public void setAge(int age) {
@@ -56,14 +59,7 @@ public class Client extends Personne{
 
 	@Override
 	public String toString() {
-		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + ", produits=" + produits + "]";
+		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + "]";
 	}
 
-	
-	
-	
-	
-	
-	
-	
 }

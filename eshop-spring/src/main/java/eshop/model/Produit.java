@@ -1,11 +1,15 @@
 package eshop.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
@@ -13,12 +17,15 @@ import javax.validation.constraints.NotEmpty;
 public class Produit {
 
 	@Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
 	@NotEmpty
 	private String libelle;
 	@Min(1)
 	private double prix;
+	@OneToMany(mappedBy = "id.produit")
+	private List<ElementAchat> ventes;
 
 	@ManyToOne
 	@JoinColumn(name = "fournisseur")
@@ -71,6 +78,14 @@ public class Produit {
 
 	public void setFournisseur(Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
+	}
+
+	public List<ElementAchat> getVentes() {
+		return ventes;
+	}
+
+	public void setVentes(List<ElementAchat> ventes) {
+		this.ventes = ventes;
 	}
 
 	@Override
