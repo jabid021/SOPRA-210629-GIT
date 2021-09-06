@@ -2,11 +2,15 @@ package formation.sopra.formationSpringBoot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "utilisateur")
@@ -15,10 +19,15 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqUtilisateur")
 	private Long id;
-	@Column(name = "login", length = 150, nullable = false)
+	@Column(name = "login", length = 150, nullable = false, unique = true)
 	private String login;
 	@Column(name = "password", length = 200, nullable = false)
 	private String password;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role", length = 15)
+	private Role role;
+	@Column(name = "enable")
+	private boolean enable;
 
 	public Utilisateur() {
 
@@ -46,6 +55,22 @@ public class Utilisateur {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 
 	@Override
