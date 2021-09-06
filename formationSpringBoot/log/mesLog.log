@@ -1,0 +1,3 @@
+2021-09-06 10:38:50.453  INFO 42573 --- [main] f.s.f.FormationSpringBootApplication     : Starting FormationSpringBootApplication using Java 15.0.1 on macOlivier with PID 42573 (/Users/olivier/Documents/sopra20210823.nosync/SOPRA-210629-GIT/formationSpringBoot/target/classes started by olivier in /Users/olivier/Documents/sopra20210823.nosync/SOPRA-210629-GIT/formationSpringBoot)
+2021-09-06 10:38:50.466  INFO 42573 --- [main] f.s.f.FormationSpringBootApplication     : No active profile set, falling back to default profiles: default
+2021-09-06 10:38:51.443  INFO 42573 --- [main] f.s.f.FormationSpringBootApplication     : Started FormationSpringBootApplication in 1.607 seconds (JVM running for 3.019)

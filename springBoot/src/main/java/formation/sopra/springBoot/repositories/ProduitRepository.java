@@ -1,4 +1,4 @@
-package eshop.repositories;
+package formation.sopra.springBoot.repositories;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import eshop.model.Fournisseur;
-import eshop.model.Produit;
+import formation.sopra.springBoot.model.Fournisseur;
+import formation.sopra.springBoot.model.Produit;
 
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
 

@@ -12,7 +12,7 @@ import eshop.config.AppConfig;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("exoMvc.controller")
+@ComponentScan({ "exoMvc.controller", "exoMvc.restcontroller" })
 @Import(AppConfig.class)
 public class WebConfig {
 

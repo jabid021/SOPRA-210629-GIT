@@ -1,4 +1,4 @@
-package exoMvc.controller;
+package formation.sopra.springBoot.controller;
 
 import javax.validation.Valid;
 
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import eshop.model.Civilite;
-import eshop.model.Fournisseur;
-import eshop.repositories.FournisseurRepository;
-import eshop.repositories.ProduitRepository;
+import formation.sopra.springBoot.model.Civilite;
+import formation.sopra.springBoot.model.Fournisseur;
+import formation.sopra.springBoot.repositories.FournisseurRepository;
+import formation.sopra.springBoot.repositories.ProduitRepository;
 
 @Controller
 @RequestMapping("/fournisseur")
