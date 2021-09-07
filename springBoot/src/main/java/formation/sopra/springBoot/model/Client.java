@@ -66,6 +66,14 @@ public class Client extends Personne {
 		this.dateNaissance = dateNaissance;
 	}
 
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
 	@Override
 	public String toString() {
 		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + "]";
