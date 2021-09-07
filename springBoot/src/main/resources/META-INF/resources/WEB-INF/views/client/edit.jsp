@@ -19,6 +19,8 @@
 		<h1>edition client</h1>
 		<form:form action="${ctx}/client/save" method="post"
 			modelAttribute="client">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
 			<div class="form-group">
 				<form:label path="id">id:</form:label>
 				<form:input path="id" readonly="true" cssClass="form-control"

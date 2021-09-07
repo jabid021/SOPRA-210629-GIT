@@ -30,7 +30,8 @@
 		</table>
 		<div>total du panier:${total}</div>
 		<form action="${ctx}/achat/valid" method="post">
-			<select name="idClient">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}"> <select name="idClient">
 				<c:forEach items="${clients}" var="client">
 					<option value="${client.id}">${client.id}${client.prenom}
 						${client.nom}</option>

@@ -30,7 +30,9 @@
 		<table clas="table">
 			<c:forEach items="${produits.iterator()}" var="p">
 				<form action="${ctx}/achat/addPanier" method="post">
-					<input type="hidden" name="id" value="${p.id}">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}"> <input type="hidden" name="id"
+						value="${p.id}">
 					<tr>
 						<td>${p.libelle}</td>
 						<td>${p.prix}</td>

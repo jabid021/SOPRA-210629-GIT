@@ -41,6 +41,8 @@
 		${produit}
 		<form:form action="${ctx}/produit/save" method="post"
 			modelAttribute="produit">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
 			<div class="form-group">
 				<label for="id">id:</label>
 				<form:input path="id" readonly="true" cssClass="form-control" />
@@ -56,11 +58,12 @@
 				<form:input type="number" path="prix" cssClass="form-control" />
 				<form:errors path="prix" element="div" cssClass="alert alert-danger"></form:errors>
 			</div>
-			<div class="form-group"> 
+			<div class="form-group">
 				<form:label path="fournisseur">fournisseur:</form:label>
 				<form:select path="fournisseur.id" cssClass="form-control">
 					<form:option value="">pas de fournisseur</form:option>
-					<form:options items="${fournisseurs}" itemLabel="infos" itemValue="id" />
+					<form:options items="${fournisseurs}" itemLabel="infos"
+						itemValue="id" />
 				</form:select>
 				<form:errors path="fournisseur"></form:errors>
 			</div>
