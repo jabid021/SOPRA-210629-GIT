@@ -17,7 +17,6 @@
 <body>
 	<div class="container">
 		<h1>liste des clients</h1>
-		<a href="${ctx}/client/add" class="btn btn-link">ajouter</a>
 		<table class="table">
 			<tr>
 				<th>id:</th>

@@ -16,6 +16,10 @@ public class LoginUserDetails implements UserDetails {
 		this.login = login;
 	}
 
+	public Login getLogin() {
+		return login;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Arrays.asList(new SimpleGrantedAuthority(login.getRole().toString()));

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import formation.sopra.springBoot.model.Achat;
 import formation.sopra.springBoot.model.ElementAchat;
 import formation.sopra.springBoot.model.ElementAchatKey;
+import formation.sopra.springBoot.model.LoginUserDetails;
 import formation.sopra.springBoot.model.Produit;
 import formation.sopra.springBoot.repositories.AchatRepository;
 import formation.sopra.springBoot.repositories.ClientRepository;
@@ -37,7 +40,7 @@ public class AchatController {
 	private AchatRepository achatRepo;
 	@Autowired
 	private ElementAchatRepository eaRepo;
-	
+
 	@GetMapping("")
 	public ModelAndView achat(@RequestParam(name = "page", required = false, defaultValue = "0") Integer n) {
 		return goList(PageRequest.of(n, 4));
@@ -73,9 +76,11 @@ public class AchatController {
 		return modelAndView;
 	}
 
-	@PostMapping("/valid")
-	public ModelAndView valid(@RequestParam Integer idClient, HttpSession session) {
-		Achat achat = new Achat(LocalDate.now(), clientRepo.findById(idClient).get());
+	@PreAuthorize("hasAnyRole('USER')")
+	@GetMapping("/valid")
+	public ModelAndView valid(@AuthenticationPrincipal LoginUserDetails lUD, HttpSession session) {
+
+		Achat achat = new Achat(LocalDate.now(), clientRepo.findByLogin(lUD.getLogin()).get());
 		achatRepo.save(achat);
 		Map<Produit, Integer> panier = (Map<Produit, Integer>) session.getAttribute("panier");
 		for (Produit produit : panier.keySet()) {
@@ -85,6 +90,5 @@ public class AchatController {
 		ModelAndView modelAndView = new ModelAndView("achat/ok");
 		modelAndView.addObject("achat", achat);
 		return modelAndView;
-
 	}
 }

@@ -49,6 +49,16 @@
 				<form:errors path="dateNaissance" element="div"
 					cssClass="alert alert-danger"></form:errors>
 			</div>
+			<div class="form-group">
+				<form:label path="login">login:</form:label>
+				<form:input path="login.login" cssClass="form-control" required="true" />
+				<form:errors path="login.login" element="div" cssClass="alert alert-danger"></form:errors>
+			</div>
+			<div class="form-group">
+				<form:label path="login">mot de passe:</form:label>
+				<form:input type="password" path="login.password" cssClass="form-control" required="true" />
+				<form:errors path="login.password" element="div" cssClass="alert alert-danger"></form:errors>
+			</div>
 			<div>
 				<button type="submit" class="btn btn-outline-primary">enregistrer</button>
 				<a href="${ctx}/fournisseur" class="btn btn-outline-warning">annuler</a>

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "login")
@@ -18,8 +19,10 @@ public class Login {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqLogin")
 	private Long id;
 	@Column(name = "login", length = 150, unique = true, nullable = false)
+	@NotEmpty
 	private String login;
 	@Column(name = "password", length = 255, nullable = false)
+	@NotEmpty
 	private String password;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", length = 15, nullable = false)

@@ -30,8 +30,8 @@
 		</table>
 		<div>total du panier:${total}</div>
 		<div>
-			<a href="" class="btn btn-link">connexion</a> <a href=""
-				class="btn btn-link">inscription</a>
+			<a href="${ctx}/achat/valid" class="btn btn-link">connexion</a> <a
+				href="${ctx}/client/inscription" class="btn btn-link">inscription</a>
 		</div>
 	</div>
 </body>
