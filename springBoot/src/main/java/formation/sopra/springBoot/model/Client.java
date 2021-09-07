@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,6 +27,10 @@ public class Client extends Personne {
 
 	@OneToMany(mappedBy = "client")
 	private List<Achat> achats;
+
+	@OneToOne
+	@JoinColumn(name = "id_login", foreignKey = @ForeignKey(name = "client_id_login_fk"))
+	private Login login;
 
 	public Client() {
 		super();

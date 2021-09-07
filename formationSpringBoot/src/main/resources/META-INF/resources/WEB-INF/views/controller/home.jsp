@@ -15,24 +15,8 @@
 </head>
 <body>
 	<div class="container">
-		<c:set var="total" value="0" />
-		<table class="table">
-			<c:forEach items="${panier}" var="element">
-				<tr>
-					<td>${element.key.libelle}</td>
-					<td>${element.key.prix}</td>
-					<td>${element.value}</td>
-					<td>${element.key.prix * element.value}</td>
-				</tr>
-				<c:set var="total"
-					value="${total + element.key.prix * element.value }"></c:set>
-			</c:forEach>
-		</table>
-		<div>total du panier:${total}</div>
-		<div>
-			<a href="" class="btn btn-link">connexion</a> <a href=""
-				class="btn btn-link">inscription</a>
-		</div>
+		<jsp:include page="../menu.jsp"></jsp:include>
+		<h1>page controller</h1>
 	</div>
 </body>
 </html>

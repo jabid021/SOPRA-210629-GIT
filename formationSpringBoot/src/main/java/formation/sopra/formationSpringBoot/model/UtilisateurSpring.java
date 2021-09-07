@@ -16,6 +16,10 @@ public class UtilisateurSpring implements UserDetails {
 		this.utilisateur = utilisateur;
 	}
 
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Arrays.asList(new SimpleGrantedAuthority(utilisateur.getRole().toString()));

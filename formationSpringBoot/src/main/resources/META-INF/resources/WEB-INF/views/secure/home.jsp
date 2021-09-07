@@ -14,6 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>apres login</h1>
+	<div class="container">
+		<jsp:include page="../menu.jsp"></jsp:include>
+		<h1>apres login</h1>
+	</div>
 </body>
 </html>

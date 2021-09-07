@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <c:set var="ctx" value="${pageContext.servletContext.contextPath}" />
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="${ctx}">Navbar</a>
@@ -16,15 +19,22 @@
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="${ctx}/hello">hello</a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="${ctx}/secure">secure</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="${ctx}/admin">admin</a>
-			</li>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="${ctx}/login">connexion</a>
-			</li>
-			<li class="nav-item"><jsp:include page="./logout.jsp"></jsp:include>
-			</li>
+			<sec:authorize access="isAuthenticated()">
+				<li class="nav-item"><a class="nav-link" href="${ctx}/secure">secure</a>
+				</li>
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="nav-item"><a class="nav-link" href="${ctx}/admin">admin</a>
+				</li>
+			</sec:authorize>
+			<sec:authorize access="isAnonymous()">
+				<li class="nav-item"><a class="nav-link" href="${ctx}/login">connexion</a>
+				</li>
+			</sec:authorize>
+			<sec:authorize access="!isAnonymous()">
+				<li class="nav-item"><jsp:include page="./logout.jsp"></jsp:include>
+				</li>
+			</sec:authorize>
 		</ul>
 	</div>
 </nav>
