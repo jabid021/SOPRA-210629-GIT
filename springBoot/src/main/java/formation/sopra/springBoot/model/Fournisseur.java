@@ -8,12 +8,17 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Fournisseur extends Personne {
 	@Size(min = 2, message = "le nom de la societe doit etre de 2 caracteres")
 	@Column(name = "society")
+	@JsonView(JsonViews.Common.class)
 	private String societe;
 	@OneToMany(mappedBy = "fournisseur", fetch = FetchType.LAZY)
+	@JsonView(JsonViews.FournisseurWithProduits.class)
 	private List<Produit> produits;
 
 	public Fournisseur() {

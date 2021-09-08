@@ -11,20 +11,26 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Personne {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@JsonView(JsonViews.Common.class)
 	protected Integer id;
 	@Size(min = 2)
 	@Column(name = "lastname")
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "firstname")
 	@Size(min = 2)
 	protected String prenom;
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	@Column(name = "civilite", length = 4)
 	private Civilite civilite;

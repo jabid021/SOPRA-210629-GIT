@@ -12,20 +12,28 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Produit {
 
 	@Id
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@NotEmpty
+	@JsonView(JsonViews.Common.class)
 	private String libelle;
 	@Min(1)
+	@JsonView(JsonViews.Common.class)
 	private double prix;
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.produit")
 	private List<ElementAchat> ventes;
 
+	@JsonView({JsonViews.ProduitWthFournisseur.class})
 	@ManyToOne
 	@JoinColumn(name = "fournisseur")
 	private Fournisseur fournisseur;
