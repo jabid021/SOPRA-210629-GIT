@@ -26,21 +26,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.antMatcher("/**")
-				.authorizeRequests()
-					.antMatchers("/","/hello","/public/**","/controller/**").permitAll()
-					.antMatchers("/admin/**").hasAnyRole("ADMIN")
-					.anyRequest().authenticated()
-				.and()
-				.formLogin()
-					.loginPage("/login")
-					.defaultSuccessUrl("/")
-					.failureUrl("/login?error")
-					.permitAll()
-				.and()
-				.logout()
-					.logoutUrl("/logout")
-					.logoutSuccessUrl("/?logout");			
+		http.antMatcher("/**").authorizeRequests().anyRequest().permitAll();
+//				.authorizeRequests()
+//					.antMatchers("/","/hello","/public/**","/controller/**").permitAll()
+//					.antMatchers("/admin/**").hasAnyRole("ADMIN")
+//					.anyRequest().authenticated()
+//				.and()
+//				.formLogin()
+//					.loginPage("/login")
+//					.defaultSuccessUrl("/")
+//					.failureUrl("/login?error")
+//					.permitAll()
+//				.and()
+//				.logout()
+//					.logoutUrl("/logout")
+//					.logoutSuccessUrl("/?logout");			
 		// @formatter:on
 	}
 
