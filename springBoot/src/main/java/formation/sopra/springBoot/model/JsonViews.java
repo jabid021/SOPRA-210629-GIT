@@ -12,4 +12,12 @@ public class JsonViews {
 	public static class FournisseurWithProduits extends Common {
 
 	}
+
+	public static class AchatWithClient extends Common {
+
+	}
+
+	public static class AchatWithClientAndProduit extends Common {
+
+	}
 }

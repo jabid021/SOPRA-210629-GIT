@@ -8,7 +8,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
@@ -29,7 +28,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import formation.sopra.springBoot.exceptions.ProduitException;
 import formation.sopra.springBoot.model.Fournisseur;
 import formation.sopra.springBoot.model.JsonViews;
-import formation.sopra.springBoot.model.JsonViews.ProduitWthFournisseur;
 import formation.sopra.springBoot.model.Produit;
 import formation.sopra.springBoot.repositories.FournisseurRepository;
 import formation.sopra.springBoot.repositories.ProduitRepository;

@@ -13,19 +13,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "achat")
 public class Achat {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@Column(name = "date_achat")
+	@JsonView(JsonViews.Common.class)
 	private LocalDate dateAchat;
 	@ManyToOne
 	@JoinColumn(name = "client_id")
+	@JsonView({ JsonViews.AchatWithClient.class, JsonViews.AchatWithClientAndProduit.class })
 	private Client client;
 	@OneToMany(mappedBy = "id.achat")
+	@JsonView(JsonViews.AchatWithClientAndProduit.class)
 	private List<ElementAchat> elements;
 
 	public Achat() {

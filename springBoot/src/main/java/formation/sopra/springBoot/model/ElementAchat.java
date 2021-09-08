@@ -4,11 +4,15 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "element_achat")
 public class ElementAchat {
 	@EmbeddedId
+	@JsonView(JsonViews.AchatWithClientAndProduit.class)
 	private ElementAchatKey id;
+	@JsonView(JsonViews.Common.class)
 	private int quantite;
 
 	public ElementAchat() {

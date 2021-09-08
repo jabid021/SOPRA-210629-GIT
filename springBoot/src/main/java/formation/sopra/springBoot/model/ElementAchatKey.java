@@ -7,10 +7,13 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class ElementAchatKey implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "produit_id", foreignKey = @ForeignKey(name = "achat_produit_id_pk"))
+	@JsonView(JsonViews.AchatWithClientAndProduit.class)
 	private Produit produit;
 	@ManyToOne
 	@JoinColumn(name = "achat_id", foreignKey = @ForeignKey(name = "achat_achat_id_pk"))
