@@ -1,0 +1,13 @@
+<input [(ngModel)]="olivier.prenom" />
+<select [(ngModel)]="olivier.prenom">
+  <option value="olivier">olivier</option>
+  <option value="jordan">jordan</option>
+  <option value="victor">victor</option>
+</select>
+<h1>{{ olivier.infos }}</h1>
+
+<button (click)="log()">click</button>
+
+<div *ngIf="1 > 2" style="color: {{ couleur }}">du texte</div>
+
+<div [style.color]="setCouleur()">encore du texte</div>
