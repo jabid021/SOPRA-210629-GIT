@@ -1,0 +1,15 @@
+<input [(ngModel)]="filtre" />
+<table appDemoDirective>
+  <tr>
+    <th>nom</th>
+    <th>prix</th>
+    <th>infos</th>
+  </tr>
+  <tr *ngFor="let p of produitsFiltres()">
+    <td>{{ p.nom }}</td>
+    <td>{{ p.prix }}</td>
+    <td>{{ info(p) }}</td>
+  </tr>
+</table>
+
+<form-produit (produitReady)="getProduit($event)"></form-produit>

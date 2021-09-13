@@ -13,6 +13,8 @@ import { AscTooltipComponent } from './asc-tooltip/asc-tooltip.component';
 import { OutputComponent } from './output/output.component';
 import { FormProduitComponent } from './form-produit/form-produit.component';
 import { ShowProduitComponent } from './show-produit/show-produit.component';
+import { ListProduitComponent } from './list-produit/list-produit.component';
+import { DemoDirectiveDirective } from './demo-directive.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ShowProduitComponent } from './show-produit/show-produit.component';
     AscTooltipComponent,
     OutputComponent,
     FormProduitComponent,
-    ShowProduitComponent
+    ShowProduitComponent,
+    ListProduitComponent,
+    DemoDirectiveDirective
   ],
   imports: [
     BrowserModule, FormsModule

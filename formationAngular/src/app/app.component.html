@@ -1,11 +1,3 @@
-<p asc-bold>du contenu en gras</p>
-<asc-bold-element prefix="le prefix" [text]="produit.nom"></asc-bold-element>
+<app-list-produit ></app-list-produit>
 
-<asc-tooltip titre="et voila un tooltip">voila un message</asc-tooltip>
-
-<app-output (outputEvent)="traitementEvent($event)"></app-output>
-{{ messageRecupere }}
-
-<form-produit (produitReady)="getProduit($event)"></form-produit>
-
-<show-produit [produit]="produit"></show-produit>
+<div id="maDiv" appDemoDirective>une div avec ma directive</div>
