@@ -11,6 +11,8 @@ import { AscBoldComponent } from './asc-bold/asc-bold.component';
 import { AscBlodElementComponent } from './asc-blod-element/asc-blod-element.component';
 import { AscTooltipComponent } from './asc-tooltip/asc-tooltip.component';
 import { OutputComponent } from './output/output.component';
+import { FormProduitComponent } from './form-produit/form-produit.component';
+import { ShowProduitComponent } from './show-produit/show-produit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { OutputComponent } from './output/output.component';
     AscBoldComponent,
     AscBlodElementComponent,
     AscTooltipComponent,
-    OutputComponent
+    OutputComponent,
+    FormProduitComponent,
+    ShowProduitComponent
   ],
   imports: [
     BrowserModule, FormsModule

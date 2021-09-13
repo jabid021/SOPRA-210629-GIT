@@ -5,3 +5,7 @@
 
 <app-output (outputEvent)="traitementEvent($event)"></app-output>
 {{ messageRecupere }}
+
+<form-produit (produitReady)="getProduit($event)"></form-produit>
+
+<show-produit [produit]="produit"></show-produit>

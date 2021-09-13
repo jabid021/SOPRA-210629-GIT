@@ -11,9 +11,13 @@ export class AppComponent {
   couleur: string = '#00000';
   messageRecupere: string = '';
 
-  produit: Produit = new Produit('tele', 200);
+  produit: Produit = new Produit();
 
   traitementEvent(message: string) {
     this.messageRecupere = message;
+  }
+
+  getProduit(produit: Produit) {
+    this.produit = produit;
   }
 }
