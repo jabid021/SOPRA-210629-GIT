@@ -1,3 +1,22 @@
-<app-list-produit ></app-list-produit>
-
-<div id="maDiv" appDemoDirective>une div avec ma directive</div>
+<nav>
+  <a [routerLink]="['/home']" routerLinkActive="active">home</a>
+  <a [routerLink]="['/produits']" routerLinkActive="active">produits</a>
+  <a
+    [routerLink]="[
+      { outlets: { primary: ['produits'], second: ['home', 'olivier'] } }
+    ]"
+    routerLinkActive="active"
+    >hello</a
+  >
+  <a
+    [routerLink]="[
+      { outlets: { primary: ['produits'], second: ['home', 'eeeee'] } }
+    ]"
+    [queryParams]="{ param1: 'hello', param2: 'bye' }"
+    routerLinkActive="active"
+    >hello</a
+  >
+</nav>
+<router-outlet></router-outlet>
+<hr />
+<router-outlet name="second"></router-outlet>

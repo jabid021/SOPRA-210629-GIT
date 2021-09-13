@@ -2,6 +2,7 @@ import { Produit } from './model/produit';
 import { Personne } from './model/personne';
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

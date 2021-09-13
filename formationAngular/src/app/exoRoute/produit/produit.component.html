@@ -1,0 +1,11 @@
+<table class="table">
+  <tbody>
+    <tr
+      produit-row
+      [index]="i"
+      [produit]="p"
+      *ngFor="let p of produits; index as i"
+    ></tr>
+  </tbody>
+</table>
+<a [routerLink]="['/produits', 'new']" class="btn btn-link">nouveau produit</a>

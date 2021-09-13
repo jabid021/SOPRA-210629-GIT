@@ -1,3 +1,4 @@
+import { routes } from './routes';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,12 @@ import { FormProduitComponent } from './form-produit/form-produit.component';
 import { ShowProduitComponent } from './show-produit/show-produit.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
 import { DemoDirectiveDirective } from './demo-directive.directive';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { HelloComponent } from './hello/hello.component';
+import { ProduitComponent } from './exoRoute/produit/produit.component';
+import { ProduitDetailComponent } from './exoRoute/produit-detail/produit-detail.component';
+import { ProduitRowComponent } from './exoRoute/produit-row/produit-row.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +37,15 @@ import { DemoDirectiveDirective } from './demo-directive.directive';
     FormProduitComponent,
     ShowProduitComponent,
     ListProduitComponent,
-    DemoDirectiveDirective
+    DemoDirectiveDirective,
+    HomeComponent,
+    HelloComponent,
+    ProduitComponent,
+    ProduitDetailComponent,
+    ProduitRowComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
