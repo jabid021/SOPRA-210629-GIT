@@ -1,0 +1,9 @@
+.rouge {
+  background-color: red;
+  -webkit-transition: background-color 1000ms linear;
+}
+
+.positif {
+  background-color: green;
+  -webkit-transition: background-color 1000ms linear;
+}

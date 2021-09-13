@@ -1,13 +1,7 @@
-<input [(ngModel)]="olivier.prenom" />
-<select [(ngModel)]="olivier.prenom">
-  <option value="olivier">olivier</option>
-  <option value="jordan">jordan</option>
-  <option value="victor">victor</option>
-</select>
-<h1>{{ olivier.infos }}</h1>
+<p asc-bold>du contenu en gras</p>
+<asc-bold-element prefix="le prefix" [text]="produit.nom"></asc-bold-element>
 
-<button (click)="log()">click</button>
+<asc-tooltip titre="et voila un tooltip">voila un message</asc-tooltip>
 
-<div *ngIf="1 > 2" style="color: {{ couleur }}">du texte</div>
-
-<div [style.color]="setCouleur()">encore du texte</div>
+<app-output (outputEvent)="traitementEvent($event)"></app-output>
+{{ messageRecupere }}

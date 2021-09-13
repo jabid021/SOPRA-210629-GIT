@@ -1,3 +1,4 @@
+import { Produit } from './model/produit';
 import { Personne } from './model/personne';
 import { Component } from '@angular/core';
 
@@ -7,15 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  olivier: Personne = new Personne('olivier');
-  couleur = 'pink';
-  autreCouleur = 'green';
+  couleur: string = '#00000';
+  messageRecupere: string = '';
 
-  public log() {
-    console.log('click sur le bouton');
-  }
+  produit: Produit = new Produit('tele', 200);
 
-  public setCouleur() {
-    return 'yellow';
+  traitementEvent(message: string) {
+    this.messageRecupere = message;
   }
 }
