@@ -29,9 +29,12 @@ export class FournisseurService {
 
   public get(id: number): Observable<Fournisseur> {
     this.initHeaders();
-    return this.http.get<Fournisseur>(`${this.url}/${id}`, {
-      headers: this.headers,
-    });
+    return this.http.get<Fournisseur>(
+      `http://localhost:8080/eshop/api/fournisseur/${id}`,
+      {
+        headers: this.headers,
+      }
+    );
   }
 
   public delete(id: number | undefined) {
