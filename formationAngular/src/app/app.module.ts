@@ -1,3 +1,5 @@
+import { FakeService } from './services/fake.service';
+import { DemoService } from './services/demo.service';
 import { routes } from './routes';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +24,7 @@ import { HelloComponent } from './hello/hello.component';
 import { ProduitComponent } from './exoRoute/produit/produit.component';
 import { ProduitDetailComponent } from './exoRoute/produit-detail/produit-detail.component';
 import { ProduitRowComponent } from './exoRoute/produit-row/produit-row.component';
+import { DemoPipePipe } from './pipes/demo-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -42,12 +45,11 @@ import { ProduitRowComponent } from './exoRoute/produit-row/produit-row.componen
     HelloComponent,
     ProduitComponent,
     ProduitDetailComponent,
-    ProduitRowComponent
+    ProduitRowComponent,
+    DemoPipePipe,
   ],
-  imports: [
-    BrowserModule, FormsModule, RouterModule.forRoot(routes)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  providers: [{ provide: DemoService, useClass: DemoService }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
