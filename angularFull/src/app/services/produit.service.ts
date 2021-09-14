@@ -23,11 +23,15 @@ export class ProduitService {
   }
 
   public create(produit: Produit): Observable<Produit> {
-    return this.httpClient.post<Produit>(this.url, produit);
+    console.log(produit);
+    const obj={
+      libelle:produit.libelle,
+      prix:produit.prix
+    };
+    return this.httpClient.post<Produit>(this.url, obj);
   }
 
   public update(produit: Produit): Observable<Produit> {
-    console.log(produit);
-    return this.httpClient.put<Produit>(this.url + '/' + produit.id, produit);
+     return this.httpClient.put<Produit>(this.url + '/' + produit.id, produit);
   }
 }

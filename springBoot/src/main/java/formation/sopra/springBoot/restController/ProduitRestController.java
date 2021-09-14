@@ -63,6 +63,7 @@ public class ProduitRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produit create(@Valid @RequestBody Produit produit, BindingResult br) {
 		if (br.hasErrors()) {
+			System.out.println("erreur");
 			throw new ProduitException();
 		}
 		if (produit.getFournisseur() != null) {
