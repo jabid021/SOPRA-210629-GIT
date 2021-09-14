@@ -8,9 +8,11 @@ import { ListProduitComponent } from './produit/list-produit/list-produit.compon
 import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
+import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
+import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
 
 @NgModule({
-  declarations: [AppComponent, ListProduitComponent, EditProduitComponent],
+  declarations: [AppComponent, ListProduitComponent, EditProduitComponent, ListFournisseurComponent, EditFournisseurComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

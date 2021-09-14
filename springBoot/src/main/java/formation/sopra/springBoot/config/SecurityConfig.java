@@ -24,28 +24,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/api/**").csrf().disable().authorizeRequests().anyRequest().permitAll();
 		// @formatter:off
-//		http.antMatcher("/api/**")
-//			.csrf().ignoringAntMatchers("/api/**")
-//			.and()
-//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//			.and()
-//			.authorizeRequests()
-//				.antMatchers("/api/produit/**").authenticated()
-//				.antMatchers("/api/fournisseur/**").hasAnyRole("ADMIN")
-//				.antMatchers("/api/achat").hasAnyRole("USER")
-//			.and()
-//			.httpBasic()
-//			.and()
-//			.antMatcher("/**")
-//				.authorizeRequests()
-//					.antMatchers("/achat/**").permitAll()
-//					.antMatchers(HttpMethod.POST,"/client/save").permitAll()
-//					.antMatchers("/client/inscription").anonymous()
-//					.anyRequest().authenticated()
-//				.and()
-//				.formLogin();
+		http.antMatcher("/api/**")
+			.csrf().ignoringAntMatchers("/api/**")
+			.and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS,"/api/**").anonymous()
+				.antMatchers("/api/produit/**").authenticated()
+				.antMatchers("/api/fournisseur/**").hasAnyRole("ADMIN")
+				.antMatchers("/api/achat").hasAnyRole("USER")
+			.and()
+			.httpBasic()
+			.and()
+			.antMatcher("/**")
+				.authorizeRequests()
+					.antMatchers("/achat/**").permitAll()
+					.antMatchers(HttpMethod.POST,"/client/save").permitAll()
+					.antMatchers("/client/inscription").anonymous()
+					.anyRequest().authenticated()
+				.and()
+				.formLogin();
 		// @formatter:on
 
 	}

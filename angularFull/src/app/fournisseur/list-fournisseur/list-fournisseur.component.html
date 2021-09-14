@@ -1,0 +1,21 @@
+<table class="table">
+  <tbody>
+    <tr *ngFor="let f of fournisseurs">
+      <td>{{ f.id }}</td>
+      <td>{{ f.civilite }}</td>
+      <td>{{ f.prenom }}</td>
+      <td>{{ f.nom }}</td>
+      <td>
+        <a
+          [routerLink]="['/fournisseur/edit', f.id]"
+          routerLinkActive="active"
+          class="btn btn-link"
+          >editer</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/fournisseur/edit" routerLinkActive="active" class="btn btn-link"
+  >ajouter un fournisseur</a
+>
