@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "login")
 @SequenceGenerator(name = "seqLogin", sequenceName = "seq_login", allocationSize = 1)
@@ -20,6 +22,7 @@ public class Login {
 	private Long id;
 	@Column(name = "login", length = 150, unique = true, nullable = false)
 	@NotEmpty
+	@JsonView(JsonViews.Common.class)
 	private String login;
 	@Column(name = "password", length = 255, nullable = false)
 	@NotEmpty

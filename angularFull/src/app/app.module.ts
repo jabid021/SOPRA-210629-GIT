@@ -12,6 +12,7 @@ import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fo
 import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
 import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
 import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire
     EditFournisseurComponent,
     FormulaireTemplateComponent,
     FormulaireCodeComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,

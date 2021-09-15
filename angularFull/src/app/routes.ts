@@ -1,3 +1,4 @@
+import { InscriptionComponent } from './inscription/inscription.component';
 import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
 import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
 import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'fournisseur/edit/:id', component: EditFournisseurComponent },
   { path: 'formulaire/template', component: FormulaireTemplateComponent },
   { path: 'formulaire/code', component: FormulaireCodeComponent },
+  { path: 'inscription', component: InscriptionComponent },
 ];

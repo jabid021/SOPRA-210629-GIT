@@ -13,4 +13,12 @@ export class LoginService {
   public isPresent(login: string): Observable<boolean> {
     return this.http.get<boolean>(this.url + '/isPresent/' + login);
   }
+
+  public inscription(client: Object): Observable<any> {
+    console.log(client);
+    return this.http.post(
+      'http://localhost:8080/eshop/api/client/inscription',
+      client
+    );
+  }
 }

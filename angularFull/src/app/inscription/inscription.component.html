@@ -1,0 +1,97 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div>
+    <label>civilite</label>
+    <select class="form-control" [formControl]="civilite">
+      <option></option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>prenom</label>
+    <input class="form-control" [formControl]="prenom" />
+    <div
+      *ngIf="prenom.dirty && prenom.hasError('required')"
+      class="alert alert-danger"
+    >
+      prenom obligatoire
+    </div>
+    <div
+      *ngIf="prenom.dirty && prenom.hasError('minlength')"
+      class="alert alert-danger"
+    >
+      3 carateres minimum
+    </div>
+  </div>
+  <div class="form-group">
+    <label>nom</label>
+    <input class="form-control" [formControl]="nom" />
+    <div
+      *ngIf="nom.dirty && nom.hasError('required')"
+      class="alert alert-danger"
+    >
+      nom obligatoire
+    </div>
+    <div
+      *ngIf="nom.dirty && nom.hasError('minlength')"
+      class="alert alert-danger"
+    >
+      3 carateres minimum
+    </div>
+  </div>
+  <div class="form-group">
+    <label>date de naissance</label>
+    <input type="date" class="form-control" [formControl]="dtNaiss" />
+    <div *ngIf="dtNaiss.dirty && dtNaiss.invalid" class="alert alert-danger">
+      il faut etre majeur pour s'inscrire
+    </div>
+  </div>
+  <div class="form-group">
+    <label>login</label>
+    <input class="form-control" [formControl]="login" />
+    <div
+      *ngIf="login.dirty && login.hasError('required')"
+      class="alert alert-danger"
+    >
+      login obligatoire
+    </div>
+    <div
+      *ngIf="login.dirty && login.hasError('isPresent')"
+      class="alert alert-danger"
+    >
+      login deja utilise
+    </div>
+  </div>
+  <div class="form-group">
+    <label>mot de passe</label>
+    <input type="password" class="form-control" [formControl]="password" />
+    <div
+      *ngIf="password.dirty && password.hasError('required')"
+      class="alert alert-danger"
+    >
+      mot de passe obligatoire
+    </div>
+    <div
+      *ngIf="password.dirty && password.hasError('pattern')"
+      class="alert alert-danger"
+    >
+      il faut une majuscule, une minuscule, un chiffre et 5 caracteres minimum
+    </div>
+  </div>
+  <div class="form-group">
+    <label>confirmation</label>
+    <input class="form-control" [formControl]="confirm" type="password" />
+    <div
+      *ngIf="confirm.dirty && confirm.hasError('required')"
+      class="alert alert-danger"
+    >
+      confirmation obligatoire
+    </div>
+    <div *ngIf="groupPassword.hasError('notEquals')" class="alert alert-danger">
+      les 2 mots de passe ne sont pas identiques
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">
+      enregistrer
+    </button>
+  </div>
+</form>

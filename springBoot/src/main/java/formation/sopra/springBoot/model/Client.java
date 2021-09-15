@@ -13,6 +13,8 @@ import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import formation.sopra.springBoot.validators.Majeur;
 
 @Entity
@@ -23,11 +25,13 @@ public class Client extends Personne {
 	@Past
 	@Majeur
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonView(JsonViews.Common.class)
 	private LocalDate dateNaissance;
 
 	@OneToMany(mappedBy = "client")
 	private List<Achat> achats;
 
+	@JsonView(JsonViews.ClientWithLogin.class)
 	@OneToOne
 	@JoinColumn(name = "id_login", foreignKey = @ForeignKey(name = "client_id_login_fk"))
 	private Login login;

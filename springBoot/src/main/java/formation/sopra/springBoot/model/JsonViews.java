@@ -20,4 +20,8 @@ public class JsonViews {
 	public static class AchatWithClientAndProduit extends Common {
 
 	}
+	
+	public static class ClientWithLogin extends Common{
+		
+	}
 }
