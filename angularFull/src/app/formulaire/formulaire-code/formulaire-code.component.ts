@@ -23,6 +23,7 @@ export class FormulaireCodeComponent implements OnInit {
   monInput: FormControl;
   autreInput: FormControl;
   groupe1: FormGroup;
+  texte: string = '';
 
   constructor(private fb: FormBuilder, private loginService: LoginService) {
     this.monInput = this.fb.control(
@@ -70,7 +71,8 @@ export class FormulaireCodeComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.monForm.controls['monInput'].value);
+    this.texte = this.monInput.value;
+    console.log(this.texte);
   }
 
   ngOnInit(): void {}
