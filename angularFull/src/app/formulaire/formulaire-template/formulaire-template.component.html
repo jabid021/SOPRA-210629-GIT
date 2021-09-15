@@ -1,0 +1,18 @@
+<form (ngSubmit)="submit(monForm)" #monForm="ngForm">
+  <div class="form-group">
+    <label></label>
+    <input
+      name="nameInputControl"
+      [(ngModel)]="input"
+      #inputFormControl="ngModel"
+      required
+    />
+    <div
+      *ngIf="inputFormControl.dirty && inputFormControl.invalid"
+      class="alert alert-danger"
+    >
+      invalide
+    </div>
+  </div>
+  <div><button type="submit" [disabled]="monForm.invalid">valider</button></div>
+</form>

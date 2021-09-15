@@ -1,3 +1,5 @@
+import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
+import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
 import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
 import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
 import { Routes } from '@angular/router';
@@ -11,4 +13,6 @@ export const routes: Routes = [
   { path: 'fournisseur', component: ListFournisseurComponent },
   { path: 'fournisseur/edit', component: EditFournisseurComponent },
   { path: 'fournisseur/edit/:id', component: EditFournisseurComponent },
+  { path: 'formulaire/template', component: FormulaireTemplateComponent },
+  { path: 'formulaire/code', component: FormulaireCodeComponent },
 ];

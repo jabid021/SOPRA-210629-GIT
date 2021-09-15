@@ -1,0 +1,37 @@
+<form (ngSubmit)="submit()" [formGroup]="monForm">
+  <div class="form-group">
+    <label></label>
+    <input
+      name="nameInputControl"
+      class="form-control"
+      [formControl]="monInput"
+    />
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="monInput.dirty && monInput.hasError('isPresent')"
+  >
+    deja present
+  </div>
+  <div class="alert alert-danger" *ngIf="monInput.dirty && monInput.invalid">
+    erreur
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="monInput.dirty && monInput.hasError('pasOlivier')"
+  >
+    pas olivier
+  </div>
+  <div class="form-group">
+    <label>autre input</label>
+    <input class="form-control" [formControl]="autreInput" />
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="autreInput.dirty && groupe1.hasError('notEquals')"
+  >
+    pas texte
+  </div>
+
+  <div><button type="submit" [disabled]="monForm.invalid">valider</button></div>
+</form>
