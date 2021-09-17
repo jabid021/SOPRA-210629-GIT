@@ -13,6 +13,8 @@ import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fo
 import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
 import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     FormulaireTemplateComponent,
     FormulaireCodeComponent,
     InscriptionComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

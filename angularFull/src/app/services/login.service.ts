@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -12,6 +12,15 @@ export class LoginService {
 
   public isPresent(login: string): Observable<boolean> {
     return this.http.get<boolean>(this.url + '/isPresent/' + login);
+  }
+
+  public login(login: string, password: string) {
+    let info = btoa(login + ':' + password);
+    let headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${info}`,
+    });
+    return this.http.get(this.url, { headers: headers });
   }
 
   public inscription(client: Object): Observable<any> {

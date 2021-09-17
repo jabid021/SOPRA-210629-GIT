@@ -16,13 +16,17 @@ import formation.sopra.springBoot.repositories.LoginRepository;
 @RequestMapping("/api/login")
 @CrossOrigin(origins = "*")
 public class LoginRestController {
-	
+
 	@Autowired
 	private LoginRepository loginRepo;
 
 	@GetMapping("/isPresent/{login}")
 	public boolean isPresent(@PathVariable String login) {
 		return loginRepo.findByLogin(login).isPresent();
-		 
+	}
+
+	@GetMapping("")
+	public void auth() {
+
 	}
 }

@@ -1,0 +1,16 @@
+<div class="alert alert-danger" *ngIf="message">erreur d'identification</div>
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-group">
+    <label>login:</label>
+    <input class="form-control" [formControl]="login" />
+  </div>
+  <div class="form-group">
+    <label>mot de passe:</label>
+    <input class="form-control" type="password" [formControl]="password" />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      envoyer</button
+    ><a routerLink="/home" class="btn btn-link">annuler</a>
+  </div>
+</form>
