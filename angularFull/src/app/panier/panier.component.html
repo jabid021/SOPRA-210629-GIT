@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <th>produit</th>
+    <th>quantite</th>
+  </tr>
+  <tr *ngFor="let e of panier | keyvalue">
+    <td>{{ e.value.produit.libelle }}</td>
+    <td>{{ e.value.quantite }}</td>
+  </tr>
+</table>
+<a
+  *ngIf="!log"
+  class="btn btn-link"
+  routerLink="/login"
+  routerLinkActive="active"
+  [queryParams]="{ source: 'panier' }"
+  >connexion</a
+>
+<button *ngIf="log" class="btn btn-link" (click)="valider()">valider</button>
+<a
+  *ngIf="!log"
+  class="btn btn-link"
+  routerLink="/inscription"
+  routerLinkActive="active"
+  [queryParams]="{ source: 'panier' }"
+  >inscription</a
+>

@@ -3,17 +3,25 @@
     <td>{{ p.id }}</td>
     <td>{{ p.libelle }}</td>
     <td>{{ p.prix }}</td>
-    <td>
-      <a [routerLink]="['/produit', 'edit', p.id]" routerLinkActive="active"
-        >editer</a
-      >
-    </td>
-    <td><button (click)="delete(p.id)">supprimer</button></td>
+    <achat *ngIf="!admin" [produit]="p"></achat>
+    <admin-produit
+      *ngIf="admin"
+      [id]="p.id"
+      (deleteEvent)="list()"
+    ></admin-produit>
   </tr>
 </table>
 <a
+  *ngIf="admin"
   [routerLink]="['/produit', 'edit']"
   routerLinkActive="active"
   class="btn btn-link"
   >nouveau produit</a
+>
+<a
+  *ngIf="!admin"
+  routerLink="/panier"
+  routerLinkActive="active"
+  class="btn btn-link"
+  >consultation panier</a
 >

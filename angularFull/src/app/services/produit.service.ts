@@ -13,8 +13,7 @@ export class ProduitService {
   constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Produit[]> {
-    this.initHeaders();
-    return this.httpClient.get<Produit[]>(this.url, { headers: this.headers });
+    return this.httpClient.get<Produit[]>(this.url);
   }
 
   public initHeaders() {

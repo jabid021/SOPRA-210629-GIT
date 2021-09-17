@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { LoginService } from '../services/login.service';
@@ -27,7 +28,18 @@ export class InscriptionComponent implements OnInit {
   confirm: FormControl;
   groupPassword: FormGroup;
   form: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  param: string = '';
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private ar: ActivatedRoute,
+    private router: Router
+  ) {
+    this.ar.queryParams.subscribe((params) => {
+      if (params.source) {
+        this.param = params.source;
+      }
+    });
     this.prenom = this.fb.control('', [
       Validators.required,
       Validators.minLength(3),
@@ -105,7 +117,11 @@ export class InscriptionComponent implements OnInit {
       dateNaissance: this.dtNaiss.value,
     };
     this.loginService.inscription(client).subscribe((res) => {
-      console.log('ok');
+      if (this.param) {
+        this.router.navigate(['/' + this.param]);
+      } else {
+        this.router.navigate(['/home']);
+      }
     });
   }
 }

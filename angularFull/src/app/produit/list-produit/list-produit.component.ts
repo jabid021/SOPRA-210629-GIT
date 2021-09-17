@@ -23,9 +23,7 @@ export class ListProduitComponent implements OnInit {
     });
   }
 
-  delete(id: number | undefined) {
-    this.produitService.delete(id).subscribe((res) => {
-      this.list();
-    });
+  get admin() {
+    return localStorage.getItem('role') === 'ROLE_ADMIN';
   }
 }

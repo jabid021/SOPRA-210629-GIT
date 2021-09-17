@@ -15,6 +15,9 @@ import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire
 import { InscriptionComponent } from './inscription/inscription.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AdminProduitComponent } from './produit/admin-produit/admin-produit.component';
+import { AchatComponent } from './produit/achat/achat.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { HomeComponent } from './home/home.component';
     InscriptionComponent,
     LoginComponent,
     HomeComponent,
+    AdminProduitComponent,
+    AchatComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,

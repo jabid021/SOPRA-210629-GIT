@@ -1,3 +1,4 @@
+import { PanierComponent } from './panier/panier.component';
 import { NoAuthCanActivateService } from './services/no-auth-can-activate.service';
 import { AdminCanActivateService } from './services/admin-can-activate.service';
 import { UserCanActivateService } from './services/user-can-activate.service';
@@ -17,7 +18,6 @@ export const routes: Routes = [
   {
     path: 'produit',
     component: ListProduitComponent,
-    canActivate: [AllUserCanActivateService],
   },
   {
     path: 'produit/edit',
@@ -57,5 +57,6 @@ export const routes: Routes = [
     canActivate: [NoAuthCanActivateService],
   },
   { path: 'home', component: HomeComponent },
+  { path: 'panier', component: PanierComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

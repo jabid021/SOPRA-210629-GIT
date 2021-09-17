@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/client/inscription").anonymous()
 				.antMatchers("/api/login").authenticated()
 				.antMatchers("/api/login/isPresent/**").permitAll()
+				.antMatchers(HttpMethod.GET,"/api/produit").permitAll()
 				.antMatchers("/api/produit/**").authenticated()
 				.antMatchers("/api/fournisseur/**").hasAnyRole("ADMIN")
 				.antMatchers("/api/achat").hasAnyRole("USER")
