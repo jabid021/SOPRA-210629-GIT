@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CanActivateService } from './can-activate.service';
+import { AllUserCanActivateService } from './all-user-can-activate.service';
 
 describe('CanActivateService', () => {
-  let service: CanActivateService;
+  let service: AllUserCanActivateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CanActivateService);
+    service = TestBed.inject(AllUserCanActivateService);
   });
 
   it('should be created', () => {

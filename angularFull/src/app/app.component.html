@@ -7,7 +7,7 @@
     >produit</a
   >
   <a
-    *ngIf="log"
+    *ngIf="role === 'ROLE_ADMIN'"
     [routerLink]="['/fournisseur']"
     routerLinkActive="active"
     class="btn btn-link"

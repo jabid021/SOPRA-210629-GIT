@@ -29,6 +29,7 @@ public class Login {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", length = 15, nullable = false)
+	@JsonView(JsonViews.LoginWithRole.class)
 	private Role role;
 
 	public Login() {

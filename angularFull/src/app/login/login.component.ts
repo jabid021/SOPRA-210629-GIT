@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
           'token',
           btoa(this.login.value + ':' + this.password.value)
         );
+        localStorage.setItem('role', ok.role);
         localStorage.setItem('login', this.login.value);
         this.router.navigate(['/home']);
       },

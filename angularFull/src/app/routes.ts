@@ -1,6 +1,9 @@
+import { NoAuthCanActivateService } from './services/no-auth-can-activate.service';
+import { AdminCanActivateService } from './services/admin-can-activate.service';
+import { UserCanActivateService } from './services/user-can-activate.service';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { CanActivateService } from './services/can-activate.service';
+import { AllUserCanActivateService } from './services/all-user-can-activate.service';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
 import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
@@ -14,25 +17,45 @@ export const routes: Routes = [
   {
     path: 'produit',
     component: ListProduitComponent,
-    canActivate: [CanActivateService],
+    canActivate: [AllUserCanActivateService],
   },
   {
     path: 'produit/edit',
     component: EditProduitComponent,
-    canActivate: [CanActivateService],
+    canActivate: [AdminCanActivateService],
   },
   {
     path: 'produit/edit/:id',
     component: EditProduitComponent,
-    canActivate: [CanActivateService],
+    canActivate: [AdminCanActivateService],
   },
-  { path: 'fournisseur', component: ListFournisseurComponent },
-  { path: 'fournisseur/edit', component: EditFournisseurComponent },
-  { path: 'fournisseur/edit/:id', component: EditFournisseurComponent },
+  {
+    path: 'fournisseur',
+    component: ListFournisseurComponent,
+    canActivate: [AdminCanActivateService],
+  },
+  {
+    path: 'fournisseur/edit',
+    component: EditFournisseurComponent,
+    canActivate: [AdminCanActivateService],
+  },
+  {
+    path: 'fournisseur/edit/:id',
+    component: EditFournisseurComponent,
+    canActivate: [AdminCanActivateService],
+  },
   { path: 'formulaire/template', component: FormulaireTemplateComponent },
   { path: 'formulaire/code', component: FormulaireCodeComponent },
-  { path: 'inscription', component: InscriptionComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'inscription',
+    component: InscriptionComponent,
+    canActivate: [NoAuthCanActivateService],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [NoAuthCanActivateService],
+  },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

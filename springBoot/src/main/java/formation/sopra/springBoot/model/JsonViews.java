@@ -24,4 +24,8 @@ public class JsonViews {
 	public static class ClientWithLogin extends Common{
 		
 	}
+	
+	public static class LoginWithRole extends Common{
+		
+	}
 }

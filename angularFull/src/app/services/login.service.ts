@@ -14,7 +14,7 @@ export class LoginService {
     return this.http.get<boolean>(this.url + '/isPresent/' + login);
   }
 
-  public login(login: string, password: string) {
+  public login(login: string, password: string): Observable<any> {
     let info = btoa(login + ':' + password);
     let headers: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',

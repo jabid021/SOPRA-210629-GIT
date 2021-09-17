@@ -19,4 +19,8 @@ export class AppComponent {
   get log(): boolean {
     return localStorage.getItem('token') ? true : false;
   }
+
+  get role(): string | null {
+    return localStorage.getItem('role');
+  }
 }
