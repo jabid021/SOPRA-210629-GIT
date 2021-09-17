@@ -20,7 +20,7 @@ export class ProduitService {
   public initHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + btoa('toto:toto'),
+      Authorization: 'Basic ' + localStorage.getItem('token'),
     });
   }
 

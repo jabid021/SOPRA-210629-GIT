@@ -16,7 +16,7 @@ export class FournisseurService {
   private initHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + btoa('admin:admin'),
+      Authorization: 'Basic ' + localStorage.getItem('token'),
     });
   }
 
